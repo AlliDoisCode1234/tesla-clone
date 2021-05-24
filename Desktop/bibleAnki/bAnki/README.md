@@ -18,3 +18,13 @@
 # Run
 
 `npm start`
+
+
+# Pseudo Code
+
+- Create User Profile/Account
+- Playlists (per book, per genre, per need)
+- Social Feed Aspect
+- Profile Streaks
+- Create Deck/Playlist/VerseList
+- 
