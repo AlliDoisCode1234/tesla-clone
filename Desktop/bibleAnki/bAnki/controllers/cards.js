@@ -1,8 +1,8 @@
 const cloudinary = require("../middleware/cloudinary");
-const likeCard = require("../models/Card");
+const Card = require("../models/Card");
 
 module.exports = {
-    getProfile: async (req, res) => {
+    getCards: async (req, res) => {
         try {
             const cards = await Card.find({ user: req.user.id });
             res.render("profile.ejs", { cards: cards, user: req.user });
@@ -10,7 +10,7 @@ module.exports = {
             console.log(err);
         }
     },
-    getFeed: async (req, res) => {
+    getGlobalFeed: async (req, res) => {
         try {
             const cards = await Card.find().sort({ createdAt: "desc" }).lean();
             res.render("feed.ejs", { cards: cards });
@@ -18,7 +18,7 @@ module.exports = {
             console.log(err);
         }
     },
-    getPost: async (req, res) => {
+    getCard: async (req, res) => {
         try {
             const card = await Card.findById(req.params.id);
             res.render("card.ejs", { card: card, user: req.user });
@@ -26,7 +26,7 @@ module.exports = {
             console.log(err);
         }
     },
-    createPost: async (req, res) => {
+    createCard: async (req, res) => {
         try {
             // Upload image to cloudinary
             const result = await cloudinary.uploader.upload(req.file.path);
@@ -45,7 +45,7 @@ module.exports = {
             console.log(err);
         }
     },
-    likePost: async (req, res) => {
+    likeCard: async (req, res) => {
         try {
             await Card.findOneAndUpdate(
                 { _id: req.params.id },
@@ -59,7 +59,7 @@ module.exports = {
             console.log(err);
         }
     },
-    deletePost: async (req, res) => {
+    deleteCard: async (req, res) => {
         try {
             // Find post by id
             let card = await Card.findById({ _id: req.params.id });
