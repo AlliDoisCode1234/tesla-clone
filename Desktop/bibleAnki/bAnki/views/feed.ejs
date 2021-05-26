@@ -8,8 +8,19 @@
               <img class="img-fluid" src="<%= posts[i].image%>">
             </a>
           </li>
-        <% } %>
-        </ul>
+          <% } %>
+      </ul>
     </div>
-  </div>  
-<%- include('partials/footer') -%>
+    <div class="row justify-content-center mt-5">
+      <ul class="row list-unstyled">
+        <% for(var i=0; i<cards.length; i++) {%>
+          <li class="col-6 justify-content-between mt-5">
+            <a href="/card/<%= cards[i]._id%>">
+              <img class="img-fluid" src="<%= cards[i].image%>">
+            </a>
+          </li>
+          <% } %>
+      </ul>
+    </div>
+  </div>
+  <%- include('partials/footer') -%>

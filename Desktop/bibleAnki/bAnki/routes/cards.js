@@ -1,16 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const upload = require("../middleware/multer");
-const postsController = require("../controllers/cards");
+const cardsController = require("../controllers/cards");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 //Card Routes - simplified for now
-router.get("/id", ensureAuth, postsController.getCard);
+router.get("/:id", ensureAuth, cardsController.getCard);
 
-router.post("/createCard", upload.single("file"), postsController.createCard);
+router.post("/createCard", upload.single("file"), cardsController.createCard);
 
-router.put("/likeCard/:id", postsController.likeCard);
+router.put("/likeCard/:id", cardsController.likeCard);
 
-router.delete("/deleteCard/:id", postsController.deleteCard);
+router.delete("/deleteCard/:id", cardsController.deleteCard);
 
 module.exports = router;
