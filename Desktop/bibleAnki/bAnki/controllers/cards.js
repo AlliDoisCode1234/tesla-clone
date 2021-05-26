@@ -22,7 +22,7 @@ module.exports = {
         try {
             const card = await Card.findById(req.params.id);
             console.log(card)
-            res.render("card.ejs", { card: card, user: req.user });
+            res.render("card.ejs", { card: card, user: req.user, });
         } catch (err) {
             console.log(err);
         }
