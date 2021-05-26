@@ -5,7 +5,7 @@ module.exports = {
     getProfile: async (req, res) => {
         try {
             const cards = await Card.find({ user: req.user.id });
-            res.render("profile.ejs", { cards: cards, user: req.user });
+            res.render("profile.ejs", { cards: cards, user: req.user, posts: posts });
         } catch (err) {
             console.log(err);
         }
@@ -13,7 +13,7 @@ module.exports = {
     getFeed: async (req, res) => {
         try {
             const cards = await Card.find().sort({ createdAt: "desc" }).lean();
-            res.render("feed.ejs", { cards: cards });
+            res.render("globalFeed.ejs", { cards: cards, posts: posts });
         } catch (err) {
             console.log(err);
         }
