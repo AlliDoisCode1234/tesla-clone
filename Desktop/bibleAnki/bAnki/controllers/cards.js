@@ -2,7 +2,7 @@ const cloudinary = require("../middleware/cloudinary");
 const Card = require("../models/Card");
 
 module.exports = {
-    getCards: async (req, res) => {
+    getProfile: async (req, res) => {
         try {
             const cards = await Card.find({ user: req.user.id });
             res.render("profile.ejs", { cards: cards, user: req.user });
@@ -10,7 +10,7 @@ module.exports = {
             console.log(err);
         }
     },
-    getGlobalFeed: async (req, res) => {
+    getFeed: async (req, res) => {
         try {
             const cards = await Card.find().sort({ createdAt: "desc" }).lean();
             res.render("feed.ejs", { cards: cards });
@@ -61,11 +61,11 @@ module.exports = {
     },
     deleteCard: async (req, res) => {
         try {
-            // Find post by id
+            // Find card by id
             let card = await Card.findById({ _id: req.params.id });
             // Delete image from cloudinary
             await cloudinary.uploader.destroy(card.cloudinaryId);
-            // Delete post from db
+            // Delete card from db
             await Card.remove({ _id: req.params.id });
             console.log("Deleted Card");
             res.redirect("/profile");

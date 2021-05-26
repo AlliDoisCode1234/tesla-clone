@@ -5,7 +5,7 @@ const postsController = require("../controllers/cards");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
 //Card Routes - simplified for now
-router.get("/id", ensureAuth, postsController.getCards);
+router.get("/id", ensureAuth, postsController.getCard);
 
 router.post("/createCard", upload.single("file"), postsController.createCard);
 
