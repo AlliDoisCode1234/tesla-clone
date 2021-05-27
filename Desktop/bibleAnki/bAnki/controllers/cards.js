@@ -13,7 +13,7 @@ module.exports = {
     getFeed: async (req, res) => {
         try {
             const cards = await Card.find().sort({ createdAt: "desc" }).lean();
-            res.render("globalFeed.ejs", { cards: cards, posts: posts });
+            res.render("userFeed.ejs", { cards: cards, posts: posts });
         } catch (err) {
             console.log(err);
         }
