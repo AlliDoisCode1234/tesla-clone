@@ -3,20 +3,36 @@
     <div class="row mt-5">
       <div class="col-6">
         <div>
-          <p><strong>User Name</strong>: <%= user.userName %>
-          </p>
+          <h1>
+            <%= user ? `Hello, ${user.userName}` : 'Hello Guest' %>
+          </h1>
           <p><strong>Email</strong>: <%= user.email %>
           </p>
+          <img src="<%= user.userImage ? user.userImage : 'Upload Image' %>">
+          <form action="" enctype="multipart/form-data" method="POST">
+            <div class="mb-3">
+              <label for="imgUpload" class="form-label">Choose Profile Picture</label>
+              <input type="file" class="form-control" id="imageUpload" name="file">
+            </div>
+            <button type="submit" class="btn btn-primary" value="Upload">Upload</button>
+          </form>
+
+
           <a href="/logout" class="col-3 btn btn-primary">Logout</a>
         </div>
 
-        <div class="mt-5">
-          <h2>Create a Bible Verse Anki Card</h2>
-          <form action="/post/createPost" enctype="multipart/form-data" method="POST">
-            <div class="mb-3">
-              <label for="title" class="form-label">Title</label>
-              <input type="text" class="form-control" id="title" name="title">
-            </div>
+        <!-- user streak overview -->
+        <div></div>
+
+        <!-- user default bible section 
+        should show bible version and give option to change version onclick (overlay) -->
+        <div>
+          <div>
+            <h3>
+              New International Version (DEFAULT)
+            </h3>
+          </div>
+          <form action="" enctype="multipart/form-data" method="POST">
             <div class="mb-3">
               <input type="text" name="search" id="search" placeholder="Search for Bible Version" class="search" />
               <button class="search-btn" type="submit">Submit</button>
@@ -34,6 +50,18 @@
 
               </fieldset>
             </div>
+          </form>
+        </div>
+
+        <div class="mt-5">
+          <h2>Create a Bible Verse Anki Card</h2>
+          <form action="/post/createPost" enctype="multipart/form-data" method="POST">
+            <div class="mb-3">
+              <label for="title" class="form-label">Title</label>
+              <input type="text" class="form-control" id="title" name="title">
+            </div>
+
+
             <div class="mb-3">
               <label for="caption" class="form-label">Caption</label>
               <textarea class="form-control" id="caption" name="caption"></textarea>

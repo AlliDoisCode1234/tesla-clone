@@ -1,3 +1,4 @@
+const { picture } = require("../middleware/cloudinary");
 const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 const cards = require("./cards");

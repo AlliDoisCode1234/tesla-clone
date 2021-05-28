@@ -63,3 +63,9 @@ app.use("/card", cardRoutes);
 app.listen(process.env.PORT, () => {
   console.log("Server is running, you better catch it!");
 });
+
+// Get Bible ID's from DB
+app.get('/post/createPost?:search', (req, res) => {
+  console.log(req.query);
+  res.redirect('/')
+})
