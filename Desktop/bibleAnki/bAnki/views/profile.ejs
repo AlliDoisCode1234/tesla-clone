@@ -8,6 +8,7 @@
           </h1>
           <p><strong>Email</strong>: <%= user.email %>
           </p>
+          <!-- fix image posting to db and cloudinary and rendering with profile component -->
           <img src="<%= user.userImage ? user.userImage : 'Upload Image' %>">
           <form action="" enctype="multipart/form-data" method="POST">
             <div class="mb-3">

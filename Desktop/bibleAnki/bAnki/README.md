@@ -11,9 +11,11 @@
 # MVP
 
 - Create User Profile/Account
-
+- User Image Upload
+- Mini Profile (for posts) and Profile Header (for page)
+- User Streak Overview
 - User picks Bible ID
-- (FORM) Bible Version, Book, Chapter, Verse/Passage
+- Bible Version, Book, Chapter, Verse/Passage
 - Click on Verse(s) to populate Anki Card
 - Get Verse(s) ID and store it against the user
 - Anki Card has Bible Version, Book, Chapter, and Verse(s)
