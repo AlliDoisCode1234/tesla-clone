@@ -58,20 +58,57 @@
           <h2>Create a Bible Verse Anki Card</h2>
           <form action="/post/createPost" enctype="multipart/form-data" method="POST">
             <div class="mb-3">
-              <label for="title" class="form-label">Title</label>
+              <fieldset>
+                <legend>Book</legend>
+
+                <select name="category">
+                  <!-- need to add every bible version as a dropdown option  -->
+                  <option value="js">Book</option>
+                  <option value="php">PHP Scripts</option>
+                  <option value="tuts">No Scripts</option>
+                </select>
+
+              </fieldset>
+            </div>
+            <div class="mb-3">
+              <fieldset>
+                <legend>Chapter</legend>
+
+                <select name="category">
+                  <!-- need to add every bible version as a dropdown option  -->
+                  <option value="js">Chapter</option>
+                  <option value="php">PHP Scripts</option>
+                  <option value="tuts">No Scripts</option>
+                </select>
+
+              </fieldset>
+            </div>
+            <div class="mb-3">
+              <fieldset>
+                <legend>Verse</legend>
+
+                <select name="category">
+                  <!-- need to add every bible version as a dropdown option  -->
+                  <option value="js">Verse</option>
+                  <option value="php">PHP Scripts</option>
+                  <option value="tuts">No Scripts</option>
+                </select>
+
+              </fieldset>
+            </div>
+            <div class="mb-3">
+              <label for="title" class="form-label">Deck Name</label>
               <input type="text" class="form-control" id="title" name="title">
             </div>
-
-
             <div class="mb-3">
-              <label for="caption" class="form-label">Caption</label>
+              <label for="caption" class="form-label">Tag</label>
               <textarea class="form-control" id="caption" name="caption"></textarea>
             </div>
             <div class="mb-3">
               <label for="imgUpload" class="form-label">Image</label>
               <input type="file" class="form-control" id="imageUpload" name="file">
             </div>
-            <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
+            <button type="submit" class="btn btn-primary" value="Upload">Create Bible Verse Anki Card</button>
           </form>
         </div>
         <!-- <div class="mt-5">
