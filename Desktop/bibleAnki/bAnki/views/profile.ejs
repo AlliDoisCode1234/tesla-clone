@@ -8,12 +8,13 @@
           </h1>
           <p><strong>Email</strong>: <%= user.email %>
           </p>
-          <!-- fix image posting to db and cloudinary and rendering with profile component -->
+          <!-- fix image posting to db and cloudinary and rendering with profile component
+          userImageUpload is the new path -->
           <img src="<%= user.userImage ? user.userImage : 'Upload Image' %>">
           <form action="" enctype="multipart/form-data" method="POST">
             <div class="mb-3">
-              <label for="imgUpload" class="form-label">Choose Profile Picture</label>
-              <input type="file" class="form-control" id="imageUpload" name="file">
+              <label for="userImgUpload" class="form-label">Choose Profile Picture</label>
+              <input type="file" class="form-control" id="userImageUpload" name="file">
             </div>
             <button type="submit" class="btn btn-primary" value="Upload">Upload</button>
           </form>
