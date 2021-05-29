@@ -33,6 +33,18 @@ const PostSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  front: {
+    type: String,
+    require: true,
+  },
+  back: {
+    type: String,
+    require: true,
+  },
+  tags: {
+    type: String,
+    require: true,
+  },
 });
 
 module.exports = mongoose.model("Post", PostSchema);
