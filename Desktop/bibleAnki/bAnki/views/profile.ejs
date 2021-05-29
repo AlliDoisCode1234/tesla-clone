@@ -25,7 +25,13 @@
 
         <!-- user streak overview -->
         <!-- 53 width and 7 height -->
-        <div id="calendar_basic" style="width: 1000px; height: 350px;"></div>
+        <div id="cal-heatmap"></div>
+        <script type="text/javascript">
+          var cal = new CalHeatMap();
+          cal.init({
+            data: "datas.json"
+          });
+        </script>
 
         <!-- user default bible section 
         should show bible version and give option to change version onclick (overlay) -->
@@ -46,9 +52,106 @@
 
                 <select name="category">
                   <!-- need to add every bible version as a dropdown option  -->
-                  <option value="js">JavaScripts</option>
-                  <option value="php">PHP Scripts</option>
-                  <option value="tuts">No Scripts</option>
+                  <optgroup label="English">
+
+                    <option value="685d1470fe4d5c3b-01">American Standard Version (Byzantine Text with Apocrypha)
+                    </option>
+                    <option value="6bab4d6c61b31b80-01">Brenton English Septuagint (Updated Spelling and Formatting)
+                    </option>
+
+                  <optgroup label="Ancient Greek">
+                  <optgroup label="Arabic, Standard">
+                  <optgroup label="Arapaho">
+                  <optgroup label="Aruamu">
+                  <optgroup label="Assamese">
+                  <optgroup label="Belarusan">
+                  <optgroup label="Beami">
+                  <optgroup label="Belarusian">
+                  <optgroup label="Bengali">
+
+                  <optgroup label="German">
+                  <optgroup label="Gujarati">
+                  <optgroup label="Hausa">
+                  <optgroup label="Indonesian">
+
+                  <optgroup label="Polish">
+                  <optgroup label="Susu">
+                  <optgroup label="Twi">
+                  <optgroup label="Vietnamese">
+                  <optgroup label="Nend">
+
+
+                  <optgroup label="Siksika">
+                  <optgroup label="Baga Sitemu">
+                  <optgroup label="Czech">
+                  <optgroup label="Central Kurdish">
+                  <optgroup label="German, Standard">
+                  <optgroup label="Dawro">
+                  <optgroup label="Pular">
+                  <optgroup label="Borei">
+                  <optgroup label="Kire">
+                  <optgroup label="Hindi">
+                  <optgroup label="Holiya">
+                  <optgroup label="Italian">
+                  <optgroup label="Kannada">
+                  <optgroup label="Kutu">
+                  <optgroup label="Kwere">
+                  <optgroup label="Makonde">
+                  <optgroup label="Kharam Naga">
+                  <optgroup label="Gikuyu">
+                  <optgroup label="Kapingamarangi">
+                  <optgroup label="Mum">
+                  <optgroup label="Kyenele">
+                  <optgroup label="Ganda">
+                  <optgroup label="Dholuo">
+                  <optgroup label="Malayalam">
+                  <optgroup label="Marathi">
+                  <optgroup label="Maale">
+                  <optgroup label="Male (Ethiopia)">
+                  <optgroup label="Morokodo">
+                  <optgroup label="Makhuwa-Meetto">
+                  <optgroup label="Matumbi">
+                  <optgroup label="Sankaran Maninka">
+                  <optgroup label="Mwera">
+                  <optgroup label="Ndamba">
+                  <optgroup label="Nguu">
+                  <optgroup label="Takuu">
+                  <optgroup label="Dutch">
+                  <optgroup label="Chichewa">
+                  <optgroup label="Odia">
+                  <optgroup label="Panjabi">
+                  <optgroup label="Portuguese">
+                  <optgroup label="Shipogoro">
+                  <optgroup label="Carpathian Romani">
+                  <optgroup label="Chilughuru">
+                  <optgroup label="Shatt">
+                  <optgroup label="Akukem">
+                  <optgroup label="Sanskrit">
+                  <optgroup label="Serbian">
+                  <optgroup label="Sop">
+                  <optgroup label="Swedish">
+                  <optgroup label="Swahili">
+                  <optgroup label="Tamil">
+                  <optgroup label="Tay">
+                  <optgroup label="Telugu">
+                  <optgroup label="Thai">
+                  <optgroup label="Toma">
+                  <optgroup label="Tonga (Tonga Islands)">
+                  <optgroup label="Urdu">
+
+                  <optgroup label="Vidunda">
+                  <optgroup label="Yalunka">
+                  <optgroup label="Yapese">
+                  <optgroup label="Yoruba">
+                  <optgroup label="Zaramo">
+                  <optgroup label="Urdu">
+                  <optgroup label="Zigua">
+
+
+
+
+
+
                 </select>
 
               </fieldset>

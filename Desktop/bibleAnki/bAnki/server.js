@@ -11,6 +11,15 @@ const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
 const postRoutes = require("./routes/posts");
 const cardRoutes = require("./routes/cards");
+const options = { selector: '#chart', container: '<div id="container"><div id="chart"></div></div>' }
+const D3Node = require('d3-node')
+const d3n = new D3Node(options) // initializes D3 with container element
+const d3 = d3n.d3
+d3.select(d3n.document.querySelector('#chart')).append('span') // insert span tag into #chart
+d3n.html()   // output: <html><body><div id="container"><div id="chart"><span></span></div></div></body></html>
+d3n.chartHTML()   // output: <div id="chart"><span></span></div>
+
+
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
@@ -69,3 +78,4 @@ app.get('/post/createPost?:search', (req, res) => {
   console.log(req.query);
   res.redirect('/')
 })
+
