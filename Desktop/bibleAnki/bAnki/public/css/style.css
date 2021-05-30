@@ -1,5 +1,55 @@
-button {
+button, .btn-primary {
     background: #00b373;
     border: none;
     border-radius: 10%;
+}
+
+button:hover, .btn-primary:hover {
+    background-color: purple;
+}
+
+.logo {
+    color: #00b373;
+    text-decoration: none;
+}
+
+.logo:hover {
+    color: green;
+}
+
+
+/* 
+
+
+// // // 
+Anki Card Styles 
+// // //
+
+
+*/
+
+
+#ankiCardDeck{
+    color: teal;
+}
+
+#ankiCardFront{
+    color: blue;
+}
+
+#ankiCardBack{
+    color: red;
+    z-index: 1;
+}
+
+#ankiCardTags{
+    color: purple;
+}
+
+#ankiCardLikes {
+    color: #00b373;
+}
+
+#ankiCardImage {
+    z-index: 10;
 }

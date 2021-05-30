@@ -4,10 +4,11 @@
       <div class="col-6">
         <div>
           <h1>
-            <%= user ? `Hello, ${user.userName}` : 'Hello Guest' %>
+
           </h1>
-          <p><strong>Email</strong>: <%= user.email %>
-          </p>
+          <h1><strong>Hello, </strong>
+            <%= user ? `${user.userName}` : 'Guest' %>
+          </h1>
           <!-- fix image posting to db and cloudinary and rendering with profile component
           userImageUpload is the new path -->
           <img src="<%= user.userImage ? user.userImage : 'Upload Image' %>">
@@ -25,13 +26,40 @@
 
         <!-- user streak overview -->
         <!-- 53 width and 7 height -->
+        <div id="cal-heatmap">
+          <h2>Banki Overview</h2>
+
+        </div>
+
         <div id="cal-heatmap"></div>
         <script type="text/javascript">
           var cal = new CalHeatMap();
           cal.init({
-            data: "datas.json"
+
+            domain: "month",
+            subDomain: "day",
+            cellSize: 17,
+            subDomainTextFormat: "%d",
+            domainMargin: 0,
+            start: new Date(2020, 4, 31),
+            tooltip: true,
+            data: "http://localhost/api?start={{d:start}}&stop={{d:end}}",
+            legendColors: {
+              min: "lightgreen",
+              max: "#00b373",
+              empty: "white"
+            }
+
+
+
           });
         </script>
+        <!-- <script type="text/javascript">
+          var cal = new CalHeatMap();
+          cal.init({
+            data: "datas.json"
+          });
+        </script> -->
 
         <!-- user default bible section 
         should show bible version and give option to change version onclick (overlay) -->
@@ -1137,8 +1165,8 @@
               </fieldset>
             </div>
             <div class="mb-3">
-              <label for="title" class="form-label">Deck Name</label>
-              <input type="text" class="form-control" id="title" name="title" value="Default">
+              <label for="deck" class="form-label">Deck Name</label>
+              <input type="text" class="form-control" id="deck" name="deck" value="Default">
             </div>
             <div class="mb-3">
               <label for="front" class="form-label">Front</label>
@@ -1149,35 +1177,35 @@
               <textarea class="form-control" id="back" name="back"></textarea>
             </div>
             <div class="mb-3">
-              <label for="caption" class="form-label">Tags</label>
-              <textarea class="form-control" id="caption" name="caption"></textarea>
+              <label for="tags" class="form-label">Tags</label>
+              <textarea class="form-control" id="tags" name="tags"></textarea>
             </div>
             <div class="mb-3">
               <label for="imgUpload" class="form-label">Image</label>
               <input type="file" class="form-control" id="imageUpload" name="file">
+            </div>
+            <div class="mb-3">
+              <fieldset>
+                <legend>Text Location</legend>
+
+                <select name="category">
+                  <option value="textTopCenter">Top Center</option>
+                  <option value="textTopLeft">Top Left</option>
+                  <option value="textTopRight">Top Right</option>
+                  <option value="textMiddleLeft">Middle Left</option>
+                  <option value="textMiddleCenter">Middle Center</option>
+                  <option value="textMiddleRight">Middle Right</option>
+                  <option value="textBottomLeft">Bottom Left</option>
+                  <option value="textBottomCenter">Bottom Center</option>
+                  <option value="textBottomRight">Bottom Right</option>
+
+                </select>
+
+              </fieldset>
             </div>
             <button type="submit" class="btn btn-primary" value="Upload">Create Bible Verse Anki Card</button>
           </form>
         </div>
-        <!-- <div class="mt-5">
-          <h2>Create a Bible Verse Anki Card</h2>
-          <form action="/card/createCard" enctype="multipart/form-data" method="POST">
-            <div class="mb-3">
-              <label for="title" class="form-label">Title</label>
-              <input type="text" class="form-control" id="title" name="title">
-            </div>
-            <div class="mb-3">
-              <label for="caption" class="form-label">Caption</label>
-              <textarea class="form-control" id="caption" name="caption"></textarea>
-            </div>
-            <div class="mb-3">
-              <label for="imgUpload" class="form-label">Image</label>
-              <input type="file" class="form-control" id="imageUpload" name="file">
-            </div>
-            <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
-          </form>
-        </div>
-      </div> -->
         <div class="col-6">
           <ul class="row list-unstyled">
             <% for(var i=0; i<posts.length; i++) {%>

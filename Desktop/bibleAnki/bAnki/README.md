@@ -46,5 +46,16 @@
 # Decks
 
 
+# Picture Bible Concept:
+
+- Each card will have a generic background with verse text overlay like a meme.
+
+- Each "Verse Meme" will be added to user's overall Picture Bible. 
+
+- Global User Winning Picture Bible Yearly
+
+- User level Picture Bible
+
+- Group (2 or more) level Picture Bible
 
 

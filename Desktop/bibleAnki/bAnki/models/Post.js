@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const PostSchema = new mongoose.Schema({
-  title: {
+  deck: {
     type: String,
     required: true,
   },
@@ -12,10 +12,6 @@ const PostSchema = new mongoose.Schema({
   cloudinaryId: {
     type: String,
     require: true,
-  },
-  caption: {
-    type: String,
-    required: true,
   },
   likes: {
     type: Number,
@@ -29,10 +25,6 @@ const PostSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  bibleID: {
-    type: Number,
-    required: true,
-  },
   front: {
     type: String,
     require: true,
@@ -45,6 +37,10 @@ const PostSchema = new mongoose.Schema({
     type: String,
     require: true,
   },
-});
+  textLocation: {
+    type: String,
+    require: true,
+  },
+}, { timestamps: true });
 
 module.exports = mongoose.model("Post", PostSchema);

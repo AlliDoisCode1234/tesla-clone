@@ -3,6 +3,12 @@ const cloudinary = require("../middleware/cloudinary");
 const Post = require("../models/Post");
 const cards = require("./cards");
 
+
+
+
+
+
+
 module.exports = {
   getProfile: async (req, res) => {
     try {
@@ -34,10 +40,12 @@ module.exports = {
       const result = await cloudinary.uploader.upload(req.file.path);
 
       await Post.create({
-        title: req.body.title,
+        deck: req.body.deck,
         image: result.secure_url,
         cloudinaryId: result.public_id,
-        caption: req.body.caption,
+        front: req.body.front,
+        back: req.body.back,
+        tags: req.body.tags,
         likes: 0,
         user: req.user.id,
       });
@@ -75,4 +83,5 @@ module.exports = {
       res.redirect("/profile");
     }
   },
+
 };
