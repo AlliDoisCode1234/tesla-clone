@@ -35,15 +35,19 @@ Anki Card Styles
 
 #ankiCardFront{
     color: blue;
+    font-size: 2rem;
 }
 
 #ankiCardBack{
     color: red;
     z-index: 1;
+    font-size: 3rem;
+    margin-top: -50%;
 }
 
 #ankiCardTags{
     color: purple;
+    font-size: 1rem;
 }
 
 #ankiCardLikes {
@@ -52,11 +56,13 @@ Anki Card Styles
 
 #ankiCardImage {
     z-index: 10;
+    
+    height: auto;
 }
 
 .section{
     display: flex;
-    justify-content: center;
+    
     
 
     
@@ -67,7 +73,14 @@ Anki Card Styles
 }
 
 .forms {
-    display:flex;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
     
     
+}
+
+.VOTD {
+    text-decoration: none;
+    list-style: none;
 }
