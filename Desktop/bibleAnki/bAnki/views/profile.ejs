@@ -732,12 +732,12 @@
           </form>
         </div>
 
-        <div class="mt-5">
+        <div class="mt-5" id="ankiCard" class="section">
           <h2>Create a Bible Verse Anki Card</h2>
-          <form action="/post/createPost" enctype="multipart/form-data" method="POST">
+          <form class="forms" id="ankiCardForm" action="/post/createPost" enctype="multipart/form-data" method="POST">
             <div class="mb-3">
               <fieldset>
-                <legend>Book</legend>
+                <legend class="ankiLegend">Book</legend>
 
                 <select name="category">
                   <!-- need to add every bible version as a dropdown option  -->
@@ -822,7 +822,7 @@
             </div>
             <div class="mb-3">
               <fieldset>
-                <legend>Chapter</legend>
+                <legend class="ankiLegend">Chapter</legend>
 
                 <select name="category">
                   <option value="">1</option>
@@ -981,7 +981,7 @@
             </div>
             <div class="mb-3">
               <fieldset>
-                <legend>Verse</legend>
+                <legend class="ankiLegend">Verse</legend>
 
                 <select name="category">
                   <option value="">1</option>

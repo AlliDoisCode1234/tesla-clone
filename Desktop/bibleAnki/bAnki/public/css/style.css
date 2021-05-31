@@ -53,3 +53,21 @@ Anki Card Styles
 #ankiCardImage {
     z-index: 10;
 }
+
+.section{
+    display: flex;
+    justify-content: center;
+    
+
+    
+}
+
+.ankiLegend {
+    display: flex;
+}
+
+.forms {
+    display:flex;
+    
+    
+}
