@@ -1,5 +1,5 @@
 {
-  "name": "binary-upload-boom",
+  "name": "bible-anki",
   "version": "1.0.0",
   "description": "100Devs Social Network",
   "main": "server.js",
@@ -31,5 +31,9 @@
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "validator": "^13.6.0"
+  },
+  "engines": {
+    "node": "14.5.0",
+    "npm": "7.5.6"
   }
 }
