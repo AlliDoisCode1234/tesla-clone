@@ -84,3 +84,10 @@ Anki Card Styles
     text-decoration: none;
     list-style: none;
 }
+
+#mainLogo {
+    background-image: url("/bAnki/public/imgs/scriptyourslogo.png");
+    background-size: 200px;
+    width: 100%;
+    height: auto;
+}

@@ -13,7 +13,30 @@ async function getFetch() {
         })
         const data = await response.json()
         console.log('json receives')
-        console.log(data)
+        console.log(data.data)
+        // if (data.data.length > 0) {
+        //     let temp = "";
+        //     data.data.forEach((itemData) => {
+        //         temp += "<tr>";
+        //         temp += "<td>" + itemData.id + "</td>";
+        //         temp += "<td>" + itemData.name + "</td>";
+        //     });
+        //     document.getElementById('data').innerHTML = temp;
+        // }
+
+        const biblesHashMap = {}
+
+        data.data.forEach((itemData) => {
+            let rightChar = itemData.id;
+            let leftChar = itemData.name;
+
+            biblesHashMap[rightChar] = leftChar;
+        })
+
+        console.log(biblesHashMap)
+
+
+
 
     } catch (err) {
         console.log(err)

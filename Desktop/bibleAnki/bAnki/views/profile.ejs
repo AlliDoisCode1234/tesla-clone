@@ -23,60 +23,60 @@
 
           <a href="/logout" class="col-3 btn btn-primary">Logout</a>
         </div>
+        <%- include('partials/miniProfile') -%>
+          <!-- user streak overview -->
 
-        <!-- user streak overview -->
+          <div id="cal-heatmap">
+            <h2>Banki Overview</h2>
+            <span>31,102 Verses Left</span>
 
-        <div id="cal-heatmap">
-          <h2>Banki Overview</h2>
-          <span>31,102 Verses Left</span>
+          </div>
+          <!-- add new heatmap calendar chart  -->
+          <div id="cal-heatmap"></div>
+          <script type="text/javascript">
+            var cal = new CalHeatMap();
+            cal.init({
 
-        </div>
-        <!-- add new heatmap calendar chart  -->
-        <div id="cal-heatmap"></div>
-        <script type="text/javascript">
-          var cal = new CalHeatMap();
-          cal.init({
-
-            domain: "month",
-            subDomain: "day",
-            cellSize: 17,
-            subDomainTextFormat: "%d",
-            domainMargin: 0,
-            start: new Date(2020, 4, 31),
-            tooltip: true,
-            data: "http://localhost/api?start={{d:start}}&stop={{d:end}}",
-            legendColors: {
-              min: "lightgreen",
-              max: "#00b373",
-              empty: "white"
-            }
+              domain: "month",
+              subDomain: "day",
+              cellSize: 17,
+              subDomainTextFormat: "%d",
+              domainMargin: 0,
+              start: new Date(),
+              tooltip: true,
+              data: "http://localhost/api?start={{d:start}}&stop={{d:end}}",
+              legendColors: {
+                min: "lightgreen",
+                max: "#00b373",
+                empty: "white"
+              }
 
 
 
-          });
-        </script>
-        <!-- <script type="text/javascript">
+            });
+          </script>
+          <!-- <script type="text/javascript">
           var cal = new CalHeatMap();
           cal.init({
             data: "datas.json"
           });
         </script> -->
 
-        <!-- user default bible section 
+          <!-- user default bible section 
         should show bible version and give option to change version onclick (overlay) -->
-        <div>
           <div>
-            <h3 id="userBibleType">
-              New International Version (DEFAULT)
-            </h3>
-          </div>
-          <form action="" enctype="multipart/form-data" method="POST">
-            <div class="mb-3">
-              <input type="text" name="search" id="search" placeholder="Search for Bible Version" class="search" />
-              <button class="search-btn" type="submit">Submit</button>
+            <div>
+              <h3 id="userBibleType">
+                New International Version (DEFAULT)
+              </h3>
             </div>
+            <form action="" enctype="multipart/form-data" method="POST">
+              <div class="mb-3">
+                <input type="text" name="search" id="search" placeholder="Search for Bible Version" class="search" />
+                <button class="search-btn" type="submit">Submit</button>
+              </div>
 
-            <!-- 
+              <!-- 
               
               // // //
               // // //
@@ -90,54 +90,66 @@
                   
             
             -->
-            <div class="col-6">
-              <ul class="row list-unsyled">
-                <li class="VOTD">Verse of the Day:</li>
-                <li class="VOTD"></li>
-              </ul>
-              <button id="fetchBibles" class="btns" type="button" name="getBibles">Bibles</button>
+              <div class="col-6">
+                <ul class="row list-unsyled">
+                  <li class="VOTD">Verse of the Day:</li>
+                  <li class="VOTD"></li>
+                </ul>
+                <button id="fetchBibles" class="btns" type="button" name="getBibles">Bibles</button>
 
-            </div>
-            <div class="mb-3">
-              <fieldset>
-                <legend>Bible Version:</legend>
+              </div>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
 
-                <select name="category">
+                  </tr>
+                </thead>
+                <tbody id="data">
 
-                  <optgroup label="English">
+                </tbody>
+              </table>
+              <div class="mb-3">
+                <fieldset>
+                  <legend>Bible Version:</legend>
 
-                    <option value="685d1470fe4d5c3b-01">American Standard Version (Byzantine Text with Apocrypha)
-                    </option>
-                    <option value="6bab4d6c61b31b80-01">Brenton English Septuagint (Updated Spelling and Formatting)
-                    </option>
-                    <option value="65bfdebd704a8324-01">Brenton English translation of the Septuagint</option>
-                    <option value="55212e3cf5d04d49-01">Cambridge Paragraph Bible of the KJV</option>
-                    <option value="179568874c45066f-01">Douay-Rheims American 1899</option>
-                    <option value="55ec700d9e0d77ea-01">English Majority Text Version</option>
-                    <option value="65eec8e0b60e656b-01">Free Bible Version</option>
-                    <option value="c315fa9f71d4af3a-01">Geneva Bible</option>
-                    <option value="bf8f1c7f3f9045a5-01">JPS TaNaKH 1917</option>
-                    <option value="de4e12af7f28f599-01">King James (Authorised) Version(1)</option>
-                    <option value="de4e12af7f28f599-02">King James (Authorised) Version(2)</option>
-                    <option value="01b29f4b342acc35-01">Literal Standard Version</option>
-                    <option value="40072c4a5aba4022-01">Revised Version 1885</option>
-                    <option value="ec290b5045ff54a5-01">Targum Onkelos Etheridge</option>
-                    <option value="2f0fd81d7b85b923-01">The English New Testament According to Family 35</option>
-                    <option value="06125adad2d5898a-01">The Holy Bible, American Standard Version</option>
-                    <option value="66c22495370cdfc0-01">Translation for Translators</option>
-                    <option value="9879dbb7cfe39e4d-01">World English Bible(1)</option>
-                    <option value="9879dbb7cfe39e4d-02">World English Bible(2)</option>
-                    <option value="9879dbb7cfe39e4d-03">World English Bible(3)</option>
-                    <option value="9879dbb7cfe39e4d-04">World English Bible(4)</option>
-                    <option value="7142879509583d59-01">World English Bible British Edition(1)</option>
-                    <option value="7142879509583d59-02">World English Bible British Edition(2)</option>
-                    <option value="7142879509583d59-03">World English Bible British Edition(3)</option>
-                    <option value="7142879509583d59-04">World English Bible British Edition(4)</option>
-                    <option value="f72b840c855f362c-04">World Messianic Bible</option>
-                    <option value="04da588535d2f823-04">World Messianic Bible British Edition</option>
+                  <select name="category">
+
+                    <optgroup label="English">
+
+                      <option value="685d1470fe4d5c3b-01">American Standard Version (Byzantine Text with Apocrypha)
+                      </option>
+                      <option value="6bab4d6c61b31b80-01">Brenton English Septuagint (Updated Spelling and Formatting)
+                      </option>
+                      <option value="65bfdebd704a8324-01">Brenton English translation of the Septuagint</option>
+                      <option value="55212e3cf5d04d49-01">Cambridge Paragraph Bible of the KJV</option>
+                      <option value="179568874c45066f-01">Douay-Rheims American 1899</option>
+                      <option value="55ec700d9e0d77ea-01">English Majority Text Version</option>
+                      <option value="65eec8e0b60e656b-01">Free Bible Version</option>
+                      <option value="c315fa9f71d4af3a-01">Geneva Bible</option>
+                      <option value="bf8f1c7f3f9045a5-01">JPS TaNaKH 1917</option>
+                      <option value="de4e12af7f28f599-01">King James (Authorised) Version(1)</option>
+                      <option value="de4e12af7f28f599-02">King James (Authorised) Version(2)</option>
+                      <option value="01b29f4b342acc35-01">Literal Standard Version</option>
+                      <option value="40072c4a5aba4022-01">Revised Version 1885</option>
+                      <option value="ec290b5045ff54a5-01">Targum Onkelos Etheridge</option>
+                      <option value="2f0fd81d7b85b923-01">The English New Testament According to Family 35</option>
+                      <option value="06125adad2d5898a-01">The Holy Bible, American Standard Version</option>
+                      <option value="66c22495370cdfc0-01">Translation for Translators</option>
+                      <option value="9879dbb7cfe39e4d-01">World English Bible(1)</option>
+                      <option value="9879dbb7cfe39e4d-02">World English Bible(2)</option>
+                      <option value="9879dbb7cfe39e4d-03">World English Bible(3)</option>
+                      <option value="9879dbb7cfe39e4d-04">World English Bible(4)</option>
+                      <option value="7142879509583d59-01">World English Bible British Edition(1)</option>
+                      <option value="7142879509583d59-02">World English Bible British Edition(2)</option>
+                      <option value="7142879509583d59-03">World English Bible British Edition(3)</option>
+                      <option value="7142879509583d59-04">World English Bible British Edition(4)</option>
+                      <option value="f72b840c855f362c-04">World Messianic Bible</option>
+                      <option value="04da588535d2f823-04">World Messianic Bible British Edition</option>
 
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** A ***
@@ -145,37 +157,37 @@
 
                   -->
 
-                  <optgroup label="Akukem">
+                    <optgroup label="Akukem">
 
-                    <option value="2a65010324d677b6-01">Akukem Portions for DBL</option>
+                      <option value="2a65010324d677b6-01">Akukem Portions for DBL</option>
 
-                  <optgroup label="Ancient Greek">
+                    <optgroup label="Ancient Greek">
 
-                    <option value="901dcd9744e1bf69-01">1904 Patriarchal Greek New Testament with 20 corrections from
-                      later editions</option>
-                    <option value="c114c33098c4fef1-01">Brenton Greek Septuagint</option>
-                    <option value="3aefb10641485092-01">Greek Textus Receptus</option>
-                    <option value="5e29945cf530b0f6-01">The Greek New Testament According to Family 35</option>
+                      <option value="901dcd9744e1bf69-01">1904 Patriarchal Greek New Testament with 20 corrections from
+                        later editions</option>
+                      <option value="c114c33098c4fef1-01">Brenton Greek Septuagint</option>
+                      <option value="3aefb10641485092-01">Greek Textus Receptus</option>
+                      <option value="5e29945cf530b0f6-01">The Greek New Testament According to Family 35</option>
 
-                  <optgroup label="Arabic, Standard">
+                    <optgroup label="Arabic, Standard">
 
-                    <option value="b17e246951402e50-01">Biblica® Open New Arabic Version 2012</option>
+                      <option value="b17e246951402e50-01">Biblica® Open New Arabic Version 2012</option>
 
-                  <optgroup label="Arapaho">
+                    <optgroup label="Arapaho">
 
-                    <option value="b7ad344da9c39262-01">Arapaho Luke</option>
+                      <option value="b7ad344da9c39262-01">Arapaho Luke</option>
 
-                  <optgroup label="Aruamu">
+                    <optgroup label="Aruamu">
 
-                    <option value="5e51f89e89947acb-01">Aruamu New Testament</option>
-                    <option value="98adf0b796dc9ff4-01">The Bible in Aruamu: Old Testament and New Testament</option>
+                      <option value="5e51f89e89947acb-01">Aruamu New Testament</option>
+                      <option value="98adf0b796dc9ff4-01">The Bible in Aruamu: Old Testament and New Testament</option>
 
-                  <optgroup label="Assamese">
+                    <optgroup label="Assamese">
 
-                    <option value="d199679f805f5b29-01">Indian Revised Version (IRV) Assamese - 2019</option>
+                      <option value="d199679f805f5b29-01">Indian Revised Version (IRV) Assamese - 2019</option>
 
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** B ***
@@ -183,32 +195,32 @@
 
                   -->
 
-                  <optgroup label="Baga Sitemu">
+                    <optgroup label="Baga Sitemu">
 
-                    <option value="71d2075d284c4eae-01">God's Holy Book</option>
+                      <option value="71d2075d284c4eae-01">God's Holy Book</option>
 
-                  <optgroup label="Beami">
+                    <optgroup label="Beami">
 
-                    <option value="55bab459b716348c-01">Bedamuni Bible</option>
+                      <option value="55bab459b716348c-01">Bedamuni Bible</option>
 
-                  <optgroup label="Belarusan">
+                    <optgroup label="Belarusan">
 
-                    <option value="17c44f6c89de00db-01">Belarusian New Testament and Books of Old Testament</option>
+                      <option value="17c44f6c89de00db-01">Belarusian New Testament and Books of Old Testament</option>
 
-                  <optgroup label="Belarusian">
+                    <optgroup label="Belarusian">
 
-                    <option value="b52bc8b7af3bdc6f-03">Bible (V. Semukha translation)</option>
+                      <option value="b52bc8b7af3bdc6f-03">Bible (V. Semukha translation)</option>
 
-                  <optgroup label="Bengali">
+                    <optgroup label="Bengali">
 
-                    <option value="4c3eda00cd317568-01">Indian Revised Version (IRV) Bengali</option>
+                      <option value="4c3eda00cd317568-01">Indian Revised Version (IRV) Bengali</option>
 
-                  <optgroup label="Borei">
+                    <optgroup label="Borei">
 
-                    <option value="da905e46720432e2-01">New Testament in Mborena Kam</option>
+                      <option value="da905e46720432e2-01">New Testament in Mborena Kam</option>
 
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** C ***
@@ -216,28 +228,29 @@
 
                   -->
 
-                  <optgroup label="Carpathian Romani">
+                    <optgroup label="Carpathian Romani">
 
-                    <option value="33ac978af36830fa-02">Carpathian Romani 2019</option>
+                      <option value="33ac978af36830fa-02">Carpathian Romani 2019</option>
 
-                  <optgroup label="Central Kurdish">
+                    <optgroup label="Central Kurdish">
 
-                    <option value="9ab28a81b9c4587d-01">Biblica® Open Kurdi Sorani Standard Version 2020</option>
+                      <option value="9ab28a81b9c4587d-01">Biblica® Open Kurdi Sorani Standard Version 2020</option>
 
-                  <optgroup label="Chichewa">
+                    <optgroup label="Chichewa">
 
-                    <option value="43247c35dbe56e1c-01">Biblica® Open God’s Word in Contemporary Chichewa 2016</option>
+                      <option value="43247c35dbe56e1c-01">Biblica® Open God’s Word in Contemporary Chichewa 2016
+                      </option>
 
-                  <optgroup label="Chilughuru">
+                    <optgroup label="Chilughuru">
 
-                    <option value="98d1c5bee401f80c-01">The New Testament in Lughulu</option>
+                      <option value="98d1c5bee401f80c-01">The New Testament in Lughulu</option>
 
-                  <optgroup label="Czech">
+                    <optgroup label="Czech">
 
-                    <option value="c61908161b077c4c-01">Czech Kralická Bible 1613</option>
+                      <option value="c61908161b077c4c-01">Czech Kralická Bible 1613</option>
 
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** D ***
@@ -245,20 +258,20 @@
 
                   -->
 
-                  <optgroup label="Dawro">
+                    <optgroup label="Dawro">
 
-                    <option value="e578524a0893c6b7-01">Dawro New Testament</option>
+                      <option value="e578524a0893c6b7-01">Dawro New Testament</option>
 
-                  <optgroup label="Dholuo">
+                    <optgroup label="Dholuo">
 
-                    <option value="4d4df8722134c5ee-01">Biblica® Open New Luo Translation 2020</option>
+                      <option value="4d4df8722134c5ee-01">Biblica® Open New Luo Translation 2020</option>
 
-                  <optgroup label="Dutch">
+                    <optgroup label="Dutch">
 
-                    <option value="ead7b4cc5007389c-01">Dutch Bible 1939</option>
+                      <option value="ead7b4cc5007389c-01">Dutch Bible 1939</option>
 
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** E ***
@@ -266,7 +279,7 @@
 
                   -->
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** F ***
@@ -274,7 +287,7 @@
 
                   -->
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** G ***
@@ -282,31 +295,33 @@
 
                   -->
 
-                  <optgroup label="Ganda">
+                    <optgroup label="Ganda">
 
-                    <option value="f276be3571f516cb-01">Biblica® Open Luganda Contemporary Bible 2014</option>
+                      <option value="f276be3571f516cb-01">Biblica® Open Luganda Contemporary Bible 2014</option>
 
-                  <optgroup label="German">
+                    <optgroup label="German">
 
-                    <option value="f492a38d0e52db0f-01">Elberfelder Translation (Version of bibelkommentare.de)</option>
-                    <option value="542b32484b6e38c2-01">The Holy Bible in German, translation by Kautzsch und Weizsäcker
-                      1906</option>
+                      <option value="f492a38d0e52db0f-01">Elberfelder Translation (Version of bibelkommentare.de)
+                      </option>
+                      <option value="542b32484b6e38c2-01">The Holy Bible in German, translation by Kautzsch und
+                        Weizsäcker
+                        1906</option>
 
-                  <optgroup label="German, Standard">
+                    <optgroup label="German, Standard">
 
-                    <option value="95410db44ef800c1-01">German Unrevised Elberfelder Bible</option>
+                      <option value="95410db44ef800c1-01">German Unrevised Elberfelder Bible</option>
 
-                  <optgroup label="Gikuyu">
+                    <optgroup label="Gikuyu">
 
-                    <option value="be8dc4ba39edf911-01">Biblica® Open Kikuyu Holy Word of God™</option>
+                      <option value="be8dc4ba39edf911-01">Biblica® Open Kikuyu Holy Word of God™</option>
 
-                  <optgroup label="Gujarati">
+                    <optgroup label="Gujarati">
 
-                    <option value="3548ab6114a312d4-02">Gujarati Bible</option>
-                    <option value="3548ab6114a312d4-01">Gujarati New Testament</option>
+                      <option value="3548ab6114a312d4-02">Gujarati Bible</option>
+                      <option value="3548ab6114a312d4-01">Gujarati New Testament</option>
 
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** H ***
@@ -314,21 +329,21 @@
 
                   -->
 
-                  <optgroup label="Hausa">
+                    <optgroup label="Hausa">
 
-                    <option value="0ab0c764d56a715d-01">Biblica® Open Hausa Contemporary Bible 2020(1)</option>
-                    <option value="0ab0c764d56a715d-02">Biblica® Open Hausa Contemporary Bible 2020(2)</option>
+                      <option value="0ab0c764d56a715d-01">Biblica® Open Hausa Contemporary Bible 2020(1)</option>
+                      <option value="0ab0c764d56a715d-02">Biblica® Open Hausa Contemporary Bible 2020(2)</option>
 
-                  <optgroup label="Hindi">
+                    <optgroup label="Hindi">
 
-                    <option value="705aad6832c6e4d2-02">The Holy Bible in Hindi</option>
+                      <option value="705aad6832c6e4d2-02">The Holy Bible in Hindi</option>
 
-                  <optgroup label="Holiya">
+                    <optgroup label="Holiya">
 
-                    <option value="9dec3e0ffbd4386b-01">The New Testament in Holiya Language</option>
+                      <option value="9dec3e0ffbd4386b-01">The New Testament in Holiya Language</option>
 
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** I ***
@@ -336,17 +351,17 @@
 
                   -->
 
-                  <optgroup label="Indonesian">
+                    <optgroup label="Indonesian">
 
-                    <option value="2dd568eeff29fb3c-02">Plain Indonesian Translation</option>
-                    <option value="2dd568eeff29fb3c-01">Terjemahan Sederhana Indonesia NT Second Edition</option>
+                      <option value="2dd568eeff29fb3c-02">Plain Indonesian Translation</option>
+                      <option value="2dd568eeff29fb3c-01">Terjemahan Sederhana Indonesia NT Second Edition</option>
 
-                  <optgroup label="Italian">
+                    <optgroup label="Italian">
 
-                    <option value="41f25b97f468e10b-01">Diodati Bible 1885</option>
+                      <option value="41f25b97f468e10b-01">Diodati Bible 1885</option>
 
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** J ***
@@ -354,7 +369,7 @@
 
                   -->
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** K ***
@@ -362,37 +377,37 @@
 
                   -->
 
-                  <optgroup label="Kapingamarangi">
+                    <optgroup label="Kapingamarangi">
 
-                    <option value="df7d5d71526afe9e-01">Kapingamarangi Bible</option>
+                      <option value="df7d5d71526afe9e-01">Kapingamarangi Bible</option>
 
-                  <optgroup label="Kannada">
+                    <optgroup label="Kannada">
 
-                    <option value="a33a100f04f2752e-01">Indian Revised Version (IRV) Kannada - 2019</option>
+                      <option value="a33a100f04f2752e-01">Indian Revised Version (IRV) Kannada - 2019</option>
 
-                  <optgroup label="Kharam Naga">
+                    <optgroup label="Kharam Naga">
 
-                    <option value="f258cb39615c351d-01">Kharam New Testament</option>
+                      <option value="f258cb39615c351d-01">Kharam New Testament</option>
 
-                  <optgroup label="Kire">
+                    <optgroup label="Kire">
 
-                    <option value="e8b818f49c7c2835-01">The New Testament in Kire</option>
+                      <option value="e8b818f49c7c2835-01">The New Testament in Kire</option>
 
-                  <optgroup label="Kutu">
+                    <optgroup label="Kutu">
 
-                    <option value="f2f349d77ac8f8bc-01">The New Testament in Kutu</option>
+                      <option value="f2f349d77ac8f8bc-01">The New Testament in Kutu</option>
 
-                  <optgroup label="Kwere">
+                    <optgroup label="Kwere">
 
-                    <option value="dca01eb41e39d25d-02">Kwere Bible</option>
-                    <option value="dca01eb41e39d25d-01">The New Testament in Kwere</option>
+                      <option value="dca01eb41e39d25d-02">Kwere Bible</option>
+                      <option value="dca01eb41e39d25d-01">The New Testament in Kwere</option>
 
-                  <optgroup label="Kyenele">
+                    <optgroup label="Kyenele">
 
-                    <option value="6aa52b968434d882-01">The Book of Mark - Kianying Balang</option>
+                      <option value="6aa52b968434d882-01">The Book of Mark - Kianying Balang</option>
 
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** L ***
@@ -400,7 +415,7 @@
 
                   -->
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** M ***
@@ -408,48 +423,48 @@
 
                   -->
 
-                  <optgroup label="Maale">
+                    <optgroup label="Maale">
 
-                    <option value="385573d4ba3ff72a-01">Maale Bible</option>
+                      <option value="385573d4ba3ff72a-01">Maale Bible</option>
 
-                  <optgroup label="Makhuwa-Meetto">
+                    <optgroup label="Makhuwa-Meetto">
 
-                    <option value="b5105cd03c972046-01">Makua New Testament</option>
+                      <option value="b5105cd03c972046-01">Makua New Testament</option>
 
-                  <optgroup label="Makonde">
+                    <optgroup label="Makonde">
 
-                    <option value="c11c93a0b8a04496-01">Makonde NT</option>
+                      <option value="c11c93a0b8a04496-01">Makonde NT</option>
 
-                  <optgroup label="Malayalam">
+                    <optgroup label="Malayalam">
 
-                    <option value="9f78f34aabe691c9-02">Malayalam Indian Revised Version Bible</option>
+                      <option value="9f78f34aabe691c9-02">Malayalam Indian Revised Version Bible</option>
 
-                  <optgroup label="Male (Ethiopia)">
+                    <optgroup label="Male (Ethiopia)">
 
-                    <option value="bed82ba57f117c16-01">Maale New Testament</option>
+                      <option value="bed82ba57f117c16-01">Maale New Testament</option>
 
-                  <optgroup label="Marathi">
+                    <optgroup label="Marathi">
 
-                    <option value="8c49129a458d4059-01">Indian Revised Version (IRV) - Marathi</option>
+                      <option value="8c49129a458d4059-01">Indian Revised Version (IRV) - Marathi</option>
 
-                  <optgroup label="Matumbi">
+                    <optgroup label="Matumbi">
 
-                    <option value="f638e44feb77f803-01">The Holy Gospel of Jesus for the Matumbi</option>
+                      <option value="f638e44feb77f803-01">The Holy Gospel of Jesus for the Matumbi</option>
 
-                  <optgroup label="Morokodo">
+                    <optgroup label="Morokodo">
 
-                    <option value="abf017938be72f46-01">Morokodo</option>
+                      <option value="abf017938be72f46-01">Morokodo</option>
 
-                  <optgroup label="Mum">
+                    <optgroup label="Mum">
 
-                    <option value="5591cba5ae063228-01">Mum Language NT Portions</option>
+                      <option value="5591cba5ae063228-01">Mum Language NT Portions</option>
 
-                  <optgroup label="Mwera">
+                    <optgroup label="Mwera">
 
-                    <option value="ed5744967fe39c8c-01">The New Testament in Mwela</option>
+                      <option value="ed5744967fe39c8c-01">The New Testament in Mwela</option>
 
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** N ***
@@ -457,20 +472,20 @@
 
                   -->
 
-                  <optgroup label="Ndamba">
+                    <optgroup label="Ndamba">
 
-                    <option value="cb0425ae772bb042-01">The New Testament in Ndamba</option>
+                      <option value="cb0425ae772bb042-01">The New Testament in Ndamba</option>
 
-                  <optgroup label="Nend">
+                    <optgroup label="Nend">
 
-                    <option value="0c2ff0a5c8b9069c-01">Nend Portions - Mark</option>
+                      <option value="0c2ff0a5c8b9069c-01">Nend Portions - Mark</option>
 
-                  <optgroup label="Nguu">
+                    <optgroup label="Nguu">
 
-                    <option value="324f457845cb5d21-01">Nguu New Testament</option>
+                      <option value="324f457845cb5d21-01">Nguu New Testament</option>
 
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** O ***
@@ -478,12 +493,12 @@
 
                   -->
 
-                  <optgroup label="Odia">
+                    <optgroup label="Odia">
 
-                    <option value="365f988242c307d2-02">Oria Indian Revised Version Bible</option>
+                      <option value="365f988242c307d2-02">Oria Indian Revised Version Bible</option>
 
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** P ***
@@ -491,25 +506,25 @@
 
                   -->
 
-                  <optgroup label="Panjabi">
+                    <optgroup label="Panjabi">
 
-                    <option value="e2588ba61891daa5-01">Indian Revised Version (IRV) Punjabi - 2019</option>
+                      <option value="e2588ba61891daa5-01">Indian Revised Version (IRV) Punjabi - 2019</option>
 
-                  <optgroup label="Polish">
+                    <optgroup label="Polish">
 
-                    <option value="fbb8b0e1943b417c-01">Biblica® Open Polish Living New Testament</option>
-                    <option value="1c9761e0230da6e0-01">Updated Gdansk Bible</option>
+                      <option value="fbb8b0e1943b417c-01">Biblica® Open Polish Living New Testament</option>
+                      <option value="1c9761e0230da6e0-01">Updated Gdansk Bible</option>
 
-                  <optgroup label="Portuguese">
+                    <optgroup label="Portuguese">
 
-                    <option value="90799bb5b996fddc-01">Translation for Translators in Brasilian Portuguese</option>
+                      <option value="90799bb5b996fddc-01">Translation for Translators in Brasilian Portuguese</option>
 
-                  <optgroup label="Pular">
+                    <optgroup label="Pular">
 
-                    <option value="9b076bc0f1856204-01">Pular Fuuta-Jallon Version</option>
+                      <option value="9b076bc0f1856204-01">Pular Fuuta-Jallon Version</option>
 
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** Q ***
@@ -517,7 +532,7 @@
 
                   -->
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** R ***
@@ -525,7 +540,7 @@
 
                   -->
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** S ***
@@ -533,77 +548,77 @@
 
                     -->
 
-                  <optgroup label="Sankaran Maninka">
+                    <optgroup label="Sankaran Maninka">
 
-                    <option value="4ffcec8e8f3c33e7-01">God's Holy Book in Sankaran</option>
+                      <option value="4ffcec8e8f3c33e7-01">God's Holy Book in Sankaran</option>
 
-                  <optgroup label="Sanskrit">
+                    <optgroup label="Sanskrit">
 
-                    <option value="bb3df4b7c8587c77-01">Sanskrit Bible (NT) in Assamese Script (সত্যৱেদঃ।)</option>
-                    <option value="8d1ad2c921d811c3-01">Sanskrit Bible (NT) in Bengali Script</option>
-                    <option value="9449d4ad98193779-01">Sanskrit Bible (NT) in Burmese Script (သတျဝေဒး၊)</option>
-                    <option value="33b6449cacf22773-01">Sanskrit Bible (NT) in Cologne Script (satyavEdaH|)</option>
-                    <option value="e9ea572977b4f504-01">Sanskrit Bible (NT) in Gujarati Script (સત્યવેદઃ।)</option>
-                    <option value="89007ccbb2eb5187-01">Sanskrit Bible (NT) in Harvard-Kyoto Script (satyavedaH|)
-                    </option>
-                    <option value="0b07fcef627a2db2-01">Sanskrit Bible (NT) in IAST Script (satyavedaḥ|)</option>
-                    <option value="d4599ff3c6b97f3a-01">Sanskrit Bible (NT) in ISO Script (satyavēdaḥ|)</option>
-                    <option value="6bc5ae3d6dd9009a-01">Sanskrit Bible (NT) in ITRANS Script (satyavedaH|)</option>
-                    <option value="c1f49ed98a65a544-01">Sanskrit Bible (NT) in Kannada Script (ಸತ್ಯವೇದಃ।)</option>
-                    <option value="6bb8b0fa7aca67c6-01">Sanskrit Bible (NT) in Khmer Script (សត្យវេទះ។)</option>
-                    <option value="119375d97b57cf04-01">Sanskrit Bible (NT) in Malayalam Script (സത്യവേദഃ।)</option>
-                    <option value="5a27fd2a2de187c8-01">Sanskrit Bible (NT) in Oriya Script (ସତ୍ୟୱେଦଃ।)</option>
-                    <option value="07225eadadcb079a-01">Sanskrit Bible (NT) in Punjabi Script (ਸਤ੍ਯਵੇਦਃ।)</option>
-                    <option value="2c2cf8df5a22a46e-01">Sanskrit Bible (NT) in Sinhala Script (සත්‍යවේදඃ।)</option>
-                    <option value="143e0e03cf5b12ae-01">Sanskrit Bible (NT) in Tamil Script (ஸத்யவேத³​:।)</option>
-                    <option value="aa146959e1d39b78-01">Sanskrit Bible (NT) in Telugu Script (సత్యవేదః।)</option>
-                    <option value="306d6ab1ca333a1e-01">Sanskrit Bible (NT) in Thai Script (สตฺยเวท:ฯ)</option>
-                    <option value="018ff00d7f55cbc1-01">Sanskrit Bible (NT) in Tibetan Script (སཏྱཝེདཿ།)</option>
-                    <option value="51b16e0b4b7c9825-01">Sanskrit Bible (NT) in Urdu Script (سَتْیَویدَح۔)</option>
-                    <option value="9a875168ff4df1a3-01">Sanskrit Bible (NT) in Velthuis Script (satyaveda.h|)</option>
-                    <option value="e8b40ccabe793c0d-01">Sanskrit NT in Devanagari</option>
+                      <option value="bb3df4b7c8587c77-01">Sanskrit Bible (NT) in Assamese Script (সত্যৱেদঃ।)</option>
+                      <option value="8d1ad2c921d811c3-01">Sanskrit Bible (NT) in Bengali Script</option>
+                      <option value="9449d4ad98193779-01">Sanskrit Bible (NT) in Burmese Script (သတျဝေဒး၊)</option>
+                      <option value="33b6449cacf22773-01">Sanskrit Bible (NT) in Cologne Script (satyavEdaH|)</option>
+                      <option value="e9ea572977b4f504-01">Sanskrit Bible (NT) in Gujarati Script (સત્યવેદઃ।)</option>
+                      <option value="89007ccbb2eb5187-01">Sanskrit Bible (NT) in Harvard-Kyoto Script (satyavedaH|)
+                      </option>
+                      <option value="0b07fcef627a2db2-01">Sanskrit Bible (NT) in IAST Script (satyavedaḥ|)</option>
+                      <option value="d4599ff3c6b97f3a-01">Sanskrit Bible (NT) in ISO Script (satyavēdaḥ|)</option>
+                      <option value="6bc5ae3d6dd9009a-01">Sanskrit Bible (NT) in ITRANS Script (satyavedaH|)</option>
+                      <option value="c1f49ed98a65a544-01">Sanskrit Bible (NT) in Kannada Script (ಸತ್ಯವೇದಃ।)</option>
+                      <option value="6bb8b0fa7aca67c6-01">Sanskrit Bible (NT) in Khmer Script (សត្យវេទះ។)</option>
+                      <option value="119375d97b57cf04-01">Sanskrit Bible (NT) in Malayalam Script (സത്യവേദഃ।)</option>
+                      <option value="5a27fd2a2de187c8-01">Sanskrit Bible (NT) in Oriya Script (ସତ୍ୟୱେଦଃ।)</option>
+                      <option value="07225eadadcb079a-01">Sanskrit Bible (NT) in Punjabi Script (ਸਤ੍ਯਵੇਦਃ।)</option>
+                      <option value="2c2cf8df5a22a46e-01">Sanskrit Bible (NT) in Sinhala Script (සත්‍යවේදඃ।)</option>
+                      <option value="143e0e03cf5b12ae-01">Sanskrit Bible (NT) in Tamil Script (ஸத்யவேத³​:।)</option>
+                      <option value="aa146959e1d39b78-01">Sanskrit Bible (NT) in Telugu Script (సత్యవేదః।)</option>
+                      <option value="306d6ab1ca333a1e-01">Sanskrit Bible (NT) in Thai Script (สตฺยเวท:ฯ)</option>
+                      <option value="018ff00d7f55cbc1-01">Sanskrit Bible (NT) in Tibetan Script (སཏྱཝེདཿ།)</option>
+                      <option value="51b16e0b4b7c9825-01">Sanskrit Bible (NT) in Urdu Script (سَتْیَویدَح۔)</option>
+                      <option value="9a875168ff4df1a3-01">Sanskrit Bible (NT) in Velthuis Script (satyaveda.h|)</option>
+                      <option value="e8b40ccabe793c0d-01">Sanskrit NT in Devanagari</option>
 
-                  <optgroup label="Shatt">
+                    <optgroup label="Shatt">
 
-                    <option value="f95e2d9b384f8e6e-01">Caning Bible Translation</option>
+                      <option value="f95e2d9b384f8e6e-01">Caning Bible Translation</option>
 
-                  <optgroup label="Shipogoro">
+                    <optgroup label="Shipogoro">
 
-                    <option value="355792a03079ccdd-01">The New Testament in Pogoro</option>
+                      <option value="355792a03079ccdd-01">The New Testament in Pogoro</option>
 
-                  <optgroup label="Serbian">
+                    <optgroup label="Serbian">
 
-                    <option value="06995ce9cd23361b-01">Serbian Bible</option>
+                      <option value="06995ce9cd23361b-01">Serbian Bible</option>
 
-                  <optgroup label="Siksika">
+                    <optgroup label="Siksika">
 
-                    <option value="6855dabfcb711cc2-01">Blackfoot Matthew</option>
+                      <option value="6855dabfcb711cc2-01">Blackfoot Matthew</option>
 
-                  <optgroup label="Sop">
+                    <optgroup label="Sop">
 
-                    <option value="e01f11e9b4b8e338-01">Sob Jonah and Luke</option>
+                      <option value="e01f11e9b4b8e338-01">Sob Jonah and Luke</option>
 
-                  <optgroup label="Spanish">
+                    <optgroup label="Spanish">
 
-                    <option value="592420522e16049f-01">Reina Valera 1909</option>
-                    <option value="482ddd53705278cc-01">The New Testament in Spanish, Free Bible Version</option>
+                      <option value="592420522e16049f-01">Reina Valera 1909</option>
+                      <option value="482ddd53705278cc-01">The New Testament in Spanish, Free Bible Version</option>
 
-                  <optgroup label="Susu">
+                    <optgroup label="Susu">
 
-                    <option value="bbeb583cd75c6356-01">Susu Bible</option>
-                    <option value="2d5220a02a7aaac6-01">Susu Bible in Arabic Script</option>
+                      <option value="bbeb583cd75c6356-01">Susu Bible</option>
+                      <option value="2d5220a02a7aaac6-01">Susu Bible in Arabic Script</option>
 
-                  <optgroup label="Swedish">
+                    <optgroup label="Swedish">
 
-                    <option value="fa4317c59f0825e0-01">Swedish Core Bible - expanded</option>
+                      <option value="fa4317c59f0825e0-01">Swedish Core Bible - expanded</option>
 
-                  <optgroup label="Swahili">
+                    <optgroup label="Swahili">
 
-                    <option value="611f8eb23aec8f13-01">Biblica® Open Kiswahili Contemporary Version (Neno) 2015
-                    </option>
+                      <option value="611f8eb23aec8f13-01">Biblica® Open Kiswahili Contemporary Version (Neno) 2015
+                      </option>
 
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** T ***
@@ -611,41 +626,41 @@
 
                   -->
 
-                  <optgroup label="Takuu">
+                    <optgroup label="Takuu">
 
-                    <option value="312df00520eac624-01">Takuu New Testament</option>
+                      <option value="312df00520eac624-01">Takuu New Testament</option>
 
-                  <optgroup label="Tamil">
+                    <optgroup label="Tamil">
 
-                    <option value="03a021185023710b-01">Indian Revised Version (IRV) Tamil - 2019</option>
+                      <option value="03a021185023710b-01">Indian Revised Version (IRV) Tamil - 2019</option>
 
-                  <optgroup label="Tay">
+                    <optgroup label="Tay">
 
-                    <option value="8e3b1a957009c6ca-01">New Testament in Tay</option>
+                      <option value="8e3b1a957009c6ca-01">New Testament in Tay</option>
 
-                  <optgroup label="Telugu">
+                    <optgroup label="Telugu">
 
-                    <option value="5b835ce16a1703ff-01">Indian Revised Version (IRV) Telugu - 2019</option>
+                      <option value="5b835ce16a1703ff-01">Indian Revised Version (IRV) Telugu - 2019</option>
 
-                  <optgroup label="Thai">
+                    <optgroup label="Thai">
 
-                    <option value="2eb94132ad61ae75-01">Thai KJV</option>
+                      <option value="2eb94132ad61ae75-01">Thai KJV</option>
 
-                  <optgroup label="Toma">
+                    <optgroup label="Toma">
 
-                    <option value="30cb581bcc911c45-01">God's Book in Toma</option>
+                      <option value="30cb581bcc911c45-01">God's Book in Toma</option>
 
-                  <optgroup label="Tonga (Tonga Islands)">
+                    <optgroup label="Tonga (Tonga Islands)">
 
-                    <option value="25210406001d9aae-01">Tongan Revised West Translation</option>
+                      <option value="25210406001d9aae-01">Tongan Revised West Translation</option>
 
-                  <optgroup label="Twi">
+                    <optgroup label="Twi">
 
-                    <option value="b6aee081108c0bc6-01">Biblica® Open Akuapem Twi Contemporary Bible 2020</option>
-                    <option value="18f6cf27f7b43297-01">Biblica® Open Asante Twi Contemporary Bible 2020</option>
+                      <option value="b6aee081108c0bc6-01">Biblica® Open Akuapem Twi Contemporary Bible 2020</option>
+                      <option value="18f6cf27f7b43297-01">Biblica® Open Asante Twi Contemporary Bible 2020</option>
 
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** U ***
@@ -653,12 +668,12 @@
 
                   -->
 
-                  <optgroup label="Urdu">
+                    <optgroup label="Urdu">
 
-                    <option value="de0270810140edf9-01">Indian Revised Version (IRV) Urdu - 2019</option>
+                      <option value="de0270810140edf9-01">Indian Revised Version (IRV) Urdu - 2019</option>
 
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** V ***
@@ -666,16 +681,16 @@
 
                   -->
 
-                  <optgroup label="Vidunda">
+                    <optgroup label="Vidunda">
 
-                    <option value="c2d40ebca6db1ec5-01">The Bible in Vidunda</option>
+                      <option value="c2d40ebca6db1ec5-01">The Bible in Vidunda</option>
 
-                  <optgroup label="Vietnamese">
+                    <optgroup label="Vietnamese">
 
-                    <option value="5cc7093967a0a392-01">Biblica® Open Vietnamese Contemporary Bible 2015</option>
-                    <option value="1b878de073afef07-01">Vietnamese Bible (1934)</option>
+                      <option value="5cc7093967a0a392-01">Biblica® Open Vietnamese Contemporary Bible 2015</option>
+                      <option value="1b878de073afef07-01">Vietnamese Bible (1934)</option>
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** W ***
@@ -683,7 +698,7 @@
 
                   -->
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** X ***
@@ -691,7 +706,7 @@
 
                   -->
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** Y ***
@@ -699,20 +714,20 @@
 
                   -->
 
-                  <optgroup label="Yalunka">
+                    <optgroup label="Yalunka">
 
-                    <option value="afe8f67d8ba9025c-01">Yalunka Bible</option>
+                      <option value="afe8f67d8ba9025c-01">Yalunka Bible</option>
 
-                  <optgroup label="Yapese">
+                    <optgroup label="Yapese">
 
-                    <option value="8a448a0135a6a70a-01">Yapese Bible</option>
+                      <option value="8a448a0135a6a70a-01">Yapese Bible</option>
 
-                  <optgroup label="Yoruba">
+                    <optgroup label="Yoruba">
 
-                    <option value="b8d1feac6e94bd74-01">Biblica® Open Yoruba Contemporary Bible 2017</option>
+                      <option value="b8d1feac6e94bd74-01">Biblica® Open Yoruba Contemporary Bible 2017</option>
 
 
-                    <!-- 
+                      <!-- 
                       
                       *********
                       *** Z ***
@@ -720,528 +735,528 @@
 
                   -->
 
-                  <optgroup label="Zaramo">
+                    <optgroup label="Zaramo">
 
-                    <option value="7e7a704dd32c4280-01">The New Testament in Zaramo</option>
+                      <option value="7e7a704dd32c4280-01">The New Testament in Zaramo</option>
 
-                  <optgroup label="Zigua">
+                    <optgroup label="Zigua">
 
-                    <option value="c9f3cf58d557a9f3-01">The New Testament in Zigua</option>
-
-
+                      <option value="c9f3cf58d557a9f3-01">The New Testament in Zigua</option>
 
 
 
 
-                </select>
-
-              </fieldset>
-            </div>
-          </form>
-        </div>
-
-        <div class="mt-5" id="ankiCard" class="section">
-          <h2>Create a Bible Verse Anki Card</h2>
-          <form class="forms" id="ankiCardForm" action="/post/createPost" enctype="multipart/form-data" method="POST">
-            <div class="mb-3">
-              <fieldset>
-                <legend class="ankiLegend">Book</legend>
-
-                <select name="category">
-                  <!-- need to add every bible version as a dropdown option  -->
-                  <optgroup label="Old Testament">
-
-                    <option value="">Genesis</option>
-                    <option value="">Exodus</option>
-                    <option value="">leviticus</option>
-                    <option value="">Numbers</option>
-                    <option value="">Deuteronomy</option>
-                    <option value="">Joshua</option>
-                    <option value="">Judges</option>
-                    <option value="">Ruth</option>
-                    <option value="">1 Samuel</option>
-                    <option value="">2 Samuel</option>
-                    <option value="">1 Kings</option>
-                    <option value="">2 Kings</option>
-                    <option value="">1 Chronicles</option>
-                    <option value="">2 Chronicles</option>
-                    <option value="">Ezra</option>
-                    <option value="">Nehemiah</option>
-                    <option value="">Esther</option>
-                    <option value="">Job</option>
-                    <option value="">Psalms</option>
-                    <option value="">Proverbs</option>
-                    <option value="">Ecclesiastes</option>
-                    <option value="">Song of Solomon</option>
-                    <option value="">Isaiah</option>
-                    <option value="">Jeremiah</option>
-                    <option value="">Lamentations</option>
-                    <option value="">Ezekiel</option>
-                    <option value="">Daniel</option>
-                    <option value="">Hosea</option>
-                    <option value="">Joel</option>
-                    <option value="">Amos</option>
-                    <option value="">Obadiah</option>
-                    <option value="">Jonah</option>
-                    <option value="">Micah</option>
-                    <option value="">Nahum</option>
-                    <option value="">Habakkuk</option>
-                    <option value="">Zephaniah</option>
-                    <option value="">Haggai</option>
-                    <option value="">Zechariah</option>
-                    <option value="">Malachi</option>
 
 
-                  <optgroup label="New Testament">
+                  </select>
 
-                    <option value="">Matthew</option>
-                    <option value="">Mark</option>
-                    <option value="">Luke</option>
-                    <option value="">John</option>
-                    <option value="">Acts</option>
-                    <option value="">Romans</option>
-                    <option value="">1 Corinthians</option>
-                    <option value="">2 Corinthians</option>
-                    <option value="">Galatians</option>
-                    <option value="">Ephesians</option>
-                    <option value="">Philippians</option>
-                    <option value="">Colossians</option>
-                    <option value="">1 Thessalonians</option>
-                    <option value="">2 Thessalonians</option>
-                    <option value="">1 Timothy</option>
-                    <option value="">2 Timothy</option>
-                    <option value="">Titus</option>
-                    <option value="">Philemon</option>
-                    <option value="">Hebrews</option>
-                    <option value="">James</option>
-                    <option value="">1 Peter</option>
-                    <option value="">2 Peter</option>
-                    <option value="">1 John</option>
-                    <option value="">2 John</option>
-                    <option value="">3 John</option>
-                    <option value="">Jude</option>
-                    <option value="">Revelation</option>
-
-
-
-                </select>
-
-              </fieldset>
-            </div>
-            <div class="mb-3">
-              <fieldset>
-                <legend class="ankiLegend">Chapter</legend>
-
-                <select name="category">
-                  <option value="">1</option>
-                  <option value="">2</option>
-                  <option value="">3</option>
-                  <option value="">4</option>
-                  <option value="">5</option>
-                  <option value="">6</option>
-                  <option value="">7</option>
-                  <option value="">8</option>
-                  <option value="">9</option>
-                  <option value="">10</option>
-                  <option value="">11</option>
-                  <option value="">12</option>
-                  <option value="">13</option>
-                  <option value="">14</option>
-                  <option value="">15</option>
-                  <option value="">16</option>
-                  <option value="">17</option>
-                  <option value="">18</option>
-                  <option value="">19</option>
-                  <option value="">20</option>
-                  <option value="">21</option>
-                  <option value="">22</option>
-                  <option value="">23</option>
-                  <option value="">24</option>
-                  <option value="">25</option>
-                  <option value="">26</option>
-                  <option value="">27</option>
-                  <option value="">28</option>
-                  <option value="">29</option>
-                  <option value="">30</option>
-                  <option value="">31</option>
-                  <option value="">32</option>
-                  <option value="">33</option>
-                  <option value="">34</option>
-                  <option value="">35</option>
-                  <option value="">36</option>
-                  <option value="">37</option>
-                  <option value="">38</option>
-                  <option value="">39</option>
-                  <option value="">40</option>
-                  <option value="">41</option>
-                  <option value="">42</option>
-                  <option value="">43</option>
-                  <option value="">44</option>
-                  <option value="">45</option>
-                  <option value="">46</option>
-                  <option value="">47</option>
-                  <option value="">48</option>
-                  <option value="">49</option>
-                  <option value="">50</option>
-                  <option value="">51</option>
-                  <option value="">52</option>
-                  <option value="">53</option>
-                  <option value="">54</option>
-                  <option value="">55</option>
-                  <option value="">56</option>
-                  <option value="">57</option>
-                  <option value="">58</option>
-                  <option value="">59</option>
-                  <option value="">60</option>
-                  <option value="">61</option>
-                  <option value="">62</option>
-                  <option value="">63</option>
-                  <option value="">64</option>
-                  <option value="">65</option>
-                  <option value="">66</option>
-                  <option value="">67</option>
-                  <option value="">68</option>
-                  <option value="">69</option>
-                  <option value="">70</option>
-                  <option value="">71</option>
-                  <option value="">72</option>
-                  <option value="">73</option>
-                  <option value="">74</option>
-                  <option value="">75</option>
-                  <option value="">76</option>
-                  <option value="">77</option>
-                  <option value="">78</option>
-                  <option value="">79</option>
-                  <option value="">80</option>
-                  <option value="">81</option>
-                  <option value="">82</option>
-                  <option value="">83</option>
-                  <option value="">84</option>
-                  <option value="">85</option>
-                  <option value="">86</option>
-                  <option value="">87</option>
-                  <option value="">88</option>
-                  <option value="">89</option>
-                  <option value="">90</option>
-                  <option value="">91</option>
-                  <option value="">92</option>
-                  <option value="">93</option>
-                  <option value="">94</option>
-                  <option value="">95</option>
-                  <option value="">96</option>
-                  <option value="">97</option>
-                  <option value="">98</option>
-                  <option value="">99</option>
-                  <option value="">100</option>
-                  <option value="">101</option>
-                  <option value="">102</option>
-                  <option value="">103</option>
-                  <option value="">104</option>
-                  <option value="">105</option>
-                  <option value="">106</option>
-                  <option value="">107</option>
-                  <option value="">108</option>
-                  <option value="">109</option>
-                  <option value="">110</option>
-                  <option value="">111</option>
-                  <option value="">112</option>
-                  <option value="">113</option>
-                  <option value="">114</option>
-                  <option value="">115</option>
-                  <option value="">116</option>
-                  <option value="">117</option>
-                  <option value="">118</option>
-                  <option value="">119</option>
-                  <option value="">120</option>
-                  <option value="">121</option>
-                  <option value="">122</option>
-                  <option value="">123</option>
-                  <option value="">124</option>
-                  <option value="">125</option>
-                  <option value="">126</option>
-                  <option value="">127</option>
-                  <option value="">128</option>
-                  <option value="">129</option>
-                  <option value="">130</option>
-                  <option value="">131</option>
-                  <option value="">132</option>
-                  <option value="">133</option>
-                  <option value="">134</option>
-                  <option value="">135</option>
-                  <option value="">136</option>
-                  <option value="">137</option>
-                  <option value="">138</option>
-                  <option value="">139</option>
-                  <option value="">140</option>
-                  <option value="">141</option>
-                  <option value="">142</option>
-                  <option value="">143</option>
-                  <option value="">144</option>
-                  <option value="">145</option>
-                  <option value="">146</option>
-                  <option value="">147</option>
-                  <option value="">148</option>
-                  <option value="">149</option>
-                  <option value="">150</option>
-                </select>
-
-              </fieldset>
-            </div>
-            <div class="mb-3">
-              <fieldset>
-                <legend class="ankiLegend">Verse</legend>
-
-                <select name="category">
-                  <option value="">1</option>
-                  <option value="">2</option>
-                  <option value="">3</option>
-                  <option value="">4</option>
-                  <option value="">5</option>
-                  <option value="">6</option>
-                  <option value="">7</option>
-                  <option value="">8</option>
-                  <option value="">9</option>
-                  <option value="">10</option>
-                  <option value="">11</option>
-                  <option value="">12</option>
-                  <option value="">13</option>
-                  <option value="">14</option>
-                  <option value="">15</option>
-                  <option value="">16</option>
-                  <option value="">17</option>
-                  <option value="">18</option>
-                  <option value="">19</option>
-                  <option value="">20</option>
-                  <option value="">21</option>
-                  <option value="">22</option>
-                  <option value="">23</option>
-                  <option value="">24</option>
-                  <option value="">25</option>
-                  <option value="">26</option>
-                  <option value="">27</option>
-                  <option value="">28</option>
-                  <option value="">29</option>
-                  <option value="">30</option>
-                  <option value="">31</option>
-                  <option value="">32</option>
-                  <option value="">33</option>
-                  <option value="">34</option>
-                  <option value="">35</option>
-                  <option value="">36</option>
-                  <option value="">37</option>
-                  <option value="">38</option>
-                  <option value="">39</option>
-                  <option value="">40</option>
-                  <option value="">41</option>
-                  <option value="">42</option>
-                  <option value="">43</option>
-                  <option value="">44</option>
-                  <option value="">45</option>
-                  <option value="">46</option>
-                  <option value="">47</option>
-                  <option value="">48</option>
-                  <option value="">49</option>
-                  <option value="">50</option>
-                  <option value="">51</option>
-                  <option value="">52</option>
-                  <option value="">53</option>
-                  <option value="">54</option>
-                  <option value="">55</option>
-                  <option value="">56</option>
-                  <option value="">57</option>
-                  <option value="">58</option>
-                  <option value="">59</option>
-                  <option value="">60</option>
-                  <option value="">61</option>
-                  <option value="">62</option>
-                  <option value="">63</option>
-                  <option value="">64</option>
-                  <option value="">65</option>
-                  <option value="">66</option>
-                  <option value="">67</option>
-                  <option value="">68</option>
-                  <option value="">69</option>
-                  <option value="">70</option>
-                  <option value="">71</option>
-                  <option value="">72</option>
-                  <option value="">73</option>
-                  <option value="">74</option>
-                  <option value="">75</option>
-                  <option value="">76</option>
-                  <option value="">77</option>
-                  <option value="">78</option>
-                  <option value="">79</option>
-                  <option value="">80</option>
-                  <option value="">81</option>
-                  <option value="">82</option>
-                  <option value="">83</option>
-                  <option value="">84</option>
-                  <option value="">85</option>
-                  <option value="">86</option>
-                  <option value="">87</option>
-                  <option value="">88</option>
-                  <option value="">89</option>
-                  <option value="">90</option>
-                  <option value="">91</option>
-                  <option value="">92</option>
-                  <option value="">93</option>
-                  <option value="">94</option>
-                  <option value="">95</option>
-                  <option value="">96</option>
-                  <option value="">97</option>
-                  <option value="">98</option>
-                  <option value="">99</option>
-                  <option value="">100</option>
-                  <option value="">101</option>
-                  <option value="">102</option>
-                  <option value="">103</option>
-                  <option value="">104</option>
-                  <option value="">105</option>
-                  <option value="">106</option>
-                  <option value="">107</option>
-                  <option value="">108</option>
-                  <option value="">109</option>
-                  <option value="">110</option>
-                  <option value="">111</option>
-                  <option value="">112</option>
-                  <option value="">113</option>
-                  <option value="">114</option>
-                  <option value="">115</option>
-                  <option value="">116</option>
-                  <option value="">117</option>
-                  <option value="">118</option>
-                  <option value="">119</option>
-                  <option value="">120</option>
-                  <option value="">121</option>
-                  <option value="">122</option>
-                  <option value="">123</option>
-                  <option value="">124</option>
-                  <option value="">125</option>
-                  <option value="">126</option>
-                  <option value="">127</option>
-                  <option value="">128</option>
-                  <option value="">129</option>
-                  <option value="">130</option>
-                  <option value="">131</option>
-                  <option value="">132</option>
-                  <option value="">133</option>
-                  <option value="">134</option>
-                  <option value="">135</option>
-                  <option value="">136</option>
-                  <option value="">137</option>
-                  <option value="">138</option>
-                  <option value="">139</option>
-                  <option value="">140</option>
-                  <option value="">141</option>
-                  <option value="">142</option>
-                  <option value="">143</option>
-                  <option value="">144</option>
-                  <option value="">145</option>
-                  <option value="">146</option>
-                  <option value="">147</option>
-                  <option value="">148</option>
-                  <option value="">149</option>
-                  <option value="">150</option>
-                  <option value="">151</option>
-                  <option value="">152</option>
-                  <option value="">153</option>
-                  <option value="">154</option>
-                  <option value="">155</option>
-                  <option value="">156</option>
-                  <option value="">157</option>
-                  <option value="">158</option>
-                  <option value="">159</option>
-                  <option value="">160</option>
-                  <option value="">161</option>
-                  <option value="">162</option>
-                  <option value="">163</option>
-                  <option value="">164</option>
-                  <option value="">165</option>
-                  <option value="">166</option>
-                  <option value="">167</option>
-                  <option value="">168</option>
-                  <option value="">169</option>
-                  <option value="">170</option>
-                  <option value="">171</option>
-                  <option value="">172</option>
-                  <option value="">173</option>
-                  <option value="">174</option>
-                  <option value="">175</option>
-                  <option value="">176</option>
-                </select>
-
-              </fieldset>
-            </div>
-            <div class="mb-3">
-              <label for="deck" class="form-label">Deck Name</label>
-              <input type="text" class="form-control" id="deck" name="deck" value="Default">
-            </div>
-            <div class="mb-3">
-              <label for="front" class="form-label">Front</label>
-              <textarea class="form-control" id="front" name="front"></textarea>
-            </div>
-            <div class="mb-3">
-              <label for="back" class="form-label">Back</label>
-              <textarea class="form-control" id="back" name="back"></textarea>
-            </div>
-            <div class="mb-3">
-              <label for="tags" class="form-label">Tags</label>
-              <textarea class="form-control" id="tags" name="tags"></textarea>
-            </div>
-            <div class="mb-3">
-              <label for="imgUpload" class="form-label">Image</label>
-              <input type="file" class="form-control" id="imageUpload" name="file">
-            </div>
-            <div class="mb-3">
-              <fieldset>
-                <legend>Text Location</legend>
-
-                <select name="category">
-                  <option value="textTopCenter">Top Center</option>
-                  <option value="textTopLeft">Top Left</option>
-                  <option value="textTopRight">Top Right</option>
-                  <option value="textMiddleLeft">Middle Left</option>
-                  <option value="textMiddleCenter">Middle Center</option>
-                  <option value="textMiddleRight">Middle Right</option>
-                  <option value="textBottomLeft">Bottom Left</option>
-                  <option value="textBottomCenter">Bottom Center</option>
-                  <option value="textBottomRight">Bottom Right</option>
-
-                </select>
-
-              </fieldset>
-            </div>
-            <button type="submit" class="btn btn-primary" value="Upload">Create Bible Verse Anki Card</button>
-          </form>
-        </div>
-        <div class="col-6">
-          <ul class="row list-unstyled">
-            <% for(var i=0; i<posts.length; i++) {%>
-              <li class="col-6 justify-content-between mt-5">
-                <a href="/post/<%= posts[i]._id%>">
-                  <img class="img-fluid" src="<%= posts[i].image%>">
-                </a>
-              </li>
-              <% } %>
-          </ul>
-          <div class="row justify-content-center mt-5">
-            <a class="btn btn-primary" href="/feed">Return to Feed</a>
+                </fieldset>
+              </div>
+            </form>
           </div>
-        </div>
-        <div class="col-6">
-          <ul class="row list-unstyled">
-            <% for(var i=0; i<cards.length; i++) {%>
-              <li class="col-6 justify-content-between mt-5">
-                <a href="/card/<%= cards[i]._id%>">
-                  <img class="img-fluid" src="<%= cards[i].image%>">
-                </a>
-              </li>
-              <% } %>
-          </ul>
-          <div class="row justify-content-center mt-5">
-            <a class="btn btn-primary" href="/globalFeed">Return to Global Feed</a>
+
+          <div class="mt-5" id="ankiCard" class="section">
+            <h2>Create a Bible Verse Anki Card</h2>
+            <form class="forms" id="ankiCardForm" action="/post/createPost" enctype="multipart/form-data" method="POST">
+              <div class="mb-3">
+                <fieldset>
+                  <legend class="ankiLegend">Book</legend>
+
+                  <select name="category">
+                    <!-- need to add every bible version as a dropdown option  -->
+                    <optgroup label="Old Testament">
+
+                      <option value="">Genesis</option>
+                      <option value="">Exodus</option>
+                      <option value="">leviticus</option>
+                      <option value="">Numbers</option>
+                      <option value="">Deuteronomy</option>
+                      <option value="">Joshua</option>
+                      <option value="">Judges</option>
+                      <option value="">Ruth</option>
+                      <option value="">1 Samuel</option>
+                      <option value="">2 Samuel</option>
+                      <option value="">1 Kings</option>
+                      <option value="">2 Kings</option>
+                      <option value="">1 Chronicles</option>
+                      <option value="">2 Chronicles</option>
+                      <option value="">Ezra</option>
+                      <option value="">Nehemiah</option>
+                      <option value="">Esther</option>
+                      <option value="">Job</option>
+                      <option value="">Psalms</option>
+                      <option value="">Proverbs</option>
+                      <option value="">Ecclesiastes</option>
+                      <option value="">Song of Solomon</option>
+                      <option value="">Isaiah</option>
+                      <option value="">Jeremiah</option>
+                      <option value="">Lamentations</option>
+                      <option value="">Ezekiel</option>
+                      <option value="">Daniel</option>
+                      <option value="">Hosea</option>
+                      <option value="">Joel</option>
+                      <option value="">Amos</option>
+                      <option value="">Obadiah</option>
+                      <option value="">Jonah</option>
+                      <option value="">Micah</option>
+                      <option value="">Nahum</option>
+                      <option value="">Habakkuk</option>
+                      <option value="">Zephaniah</option>
+                      <option value="">Haggai</option>
+                      <option value="">Zechariah</option>
+                      <option value="">Malachi</option>
+
+
+                    <optgroup label="New Testament">
+
+                      <option value="">Matthew</option>
+                      <option value="">Mark</option>
+                      <option value="">Luke</option>
+                      <option value="">John</option>
+                      <option value="">Acts</option>
+                      <option value="">Romans</option>
+                      <option value="">1 Corinthians</option>
+                      <option value="">2 Corinthians</option>
+                      <option value="">Galatians</option>
+                      <option value="">Ephesians</option>
+                      <option value="">Philippians</option>
+                      <option value="">Colossians</option>
+                      <option value="">1 Thessalonians</option>
+                      <option value="">2 Thessalonians</option>
+                      <option value="">1 Timothy</option>
+                      <option value="">2 Timothy</option>
+                      <option value="">Titus</option>
+                      <option value="">Philemon</option>
+                      <option value="">Hebrews</option>
+                      <option value="">James</option>
+                      <option value="">1 Peter</option>
+                      <option value="">2 Peter</option>
+                      <option value="">1 John</option>
+                      <option value="">2 John</option>
+                      <option value="">3 John</option>
+                      <option value="">Jude</option>
+                      <option value="">Revelation</option>
+
+
+
+                  </select>
+
+                </fieldset>
+              </div>
+              <div class="mb-3">
+                <fieldset>
+                  <legend class="ankiLegend">Chapter</legend>
+
+                  <select name="category">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                    <option value="">5</option>
+                    <option value="">6</option>
+                    <option value="">7</option>
+                    <option value="">8</option>
+                    <option value="">9</option>
+                    <option value="">10</option>
+                    <option value="">11</option>
+                    <option value="">12</option>
+                    <option value="">13</option>
+                    <option value="">14</option>
+                    <option value="">15</option>
+                    <option value="">16</option>
+                    <option value="">17</option>
+                    <option value="">18</option>
+                    <option value="">19</option>
+                    <option value="">20</option>
+                    <option value="">21</option>
+                    <option value="">22</option>
+                    <option value="">23</option>
+                    <option value="">24</option>
+                    <option value="">25</option>
+                    <option value="">26</option>
+                    <option value="">27</option>
+                    <option value="">28</option>
+                    <option value="">29</option>
+                    <option value="">30</option>
+                    <option value="">31</option>
+                    <option value="">32</option>
+                    <option value="">33</option>
+                    <option value="">34</option>
+                    <option value="">35</option>
+                    <option value="">36</option>
+                    <option value="">37</option>
+                    <option value="">38</option>
+                    <option value="">39</option>
+                    <option value="">40</option>
+                    <option value="">41</option>
+                    <option value="">42</option>
+                    <option value="">43</option>
+                    <option value="">44</option>
+                    <option value="">45</option>
+                    <option value="">46</option>
+                    <option value="">47</option>
+                    <option value="">48</option>
+                    <option value="">49</option>
+                    <option value="">50</option>
+                    <option value="">51</option>
+                    <option value="">52</option>
+                    <option value="">53</option>
+                    <option value="">54</option>
+                    <option value="">55</option>
+                    <option value="">56</option>
+                    <option value="">57</option>
+                    <option value="">58</option>
+                    <option value="">59</option>
+                    <option value="">60</option>
+                    <option value="">61</option>
+                    <option value="">62</option>
+                    <option value="">63</option>
+                    <option value="">64</option>
+                    <option value="">65</option>
+                    <option value="">66</option>
+                    <option value="">67</option>
+                    <option value="">68</option>
+                    <option value="">69</option>
+                    <option value="">70</option>
+                    <option value="">71</option>
+                    <option value="">72</option>
+                    <option value="">73</option>
+                    <option value="">74</option>
+                    <option value="">75</option>
+                    <option value="">76</option>
+                    <option value="">77</option>
+                    <option value="">78</option>
+                    <option value="">79</option>
+                    <option value="">80</option>
+                    <option value="">81</option>
+                    <option value="">82</option>
+                    <option value="">83</option>
+                    <option value="">84</option>
+                    <option value="">85</option>
+                    <option value="">86</option>
+                    <option value="">87</option>
+                    <option value="">88</option>
+                    <option value="">89</option>
+                    <option value="">90</option>
+                    <option value="">91</option>
+                    <option value="">92</option>
+                    <option value="">93</option>
+                    <option value="">94</option>
+                    <option value="">95</option>
+                    <option value="">96</option>
+                    <option value="">97</option>
+                    <option value="">98</option>
+                    <option value="">99</option>
+                    <option value="">100</option>
+                    <option value="">101</option>
+                    <option value="">102</option>
+                    <option value="">103</option>
+                    <option value="">104</option>
+                    <option value="">105</option>
+                    <option value="">106</option>
+                    <option value="">107</option>
+                    <option value="">108</option>
+                    <option value="">109</option>
+                    <option value="">110</option>
+                    <option value="">111</option>
+                    <option value="">112</option>
+                    <option value="">113</option>
+                    <option value="">114</option>
+                    <option value="">115</option>
+                    <option value="">116</option>
+                    <option value="">117</option>
+                    <option value="">118</option>
+                    <option value="">119</option>
+                    <option value="">120</option>
+                    <option value="">121</option>
+                    <option value="">122</option>
+                    <option value="">123</option>
+                    <option value="">124</option>
+                    <option value="">125</option>
+                    <option value="">126</option>
+                    <option value="">127</option>
+                    <option value="">128</option>
+                    <option value="">129</option>
+                    <option value="">130</option>
+                    <option value="">131</option>
+                    <option value="">132</option>
+                    <option value="">133</option>
+                    <option value="">134</option>
+                    <option value="">135</option>
+                    <option value="">136</option>
+                    <option value="">137</option>
+                    <option value="">138</option>
+                    <option value="">139</option>
+                    <option value="">140</option>
+                    <option value="">141</option>
+                    <option value="">142</option>
+                    <option value="">143</option>
+                    <option value="">144</option>
+                    <option value="">145</option>
+                    <option value="">146</option>
+                    <option value="">147</option>
+                    <option value="">148</option>
+                    <option value="">149</option>
+                    <option value="">150</option>
+                  </select>
+
+                </fieldset>
+              </div>
+              <div class="mb-3">
+                <fieldset>
+                  <legend class="ankiLegend">Verse</legend>
+
+                  <select name="category">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                    <option value="">5</option>
+                    <option value="">6</option>
+                    <option value="">7</option>
+                    <option value="">8</option>
+                    <option value="">9</option>
+                    <option value="">10</option>
+                    <option value="">11</option>
+                    <option value="">12</option>
+                    <option value="">13</option>
+                    <option value="">14</option>
+                    <option value="">15</option>
+                    <option value="">16</option>
+                    <option value="">17</option>
+                    <option value="">18</option>
+                    <option value="">19</option>
+                    <option value="">20</option>
+                    <option value="">21</option>
+                    <option value="">22</option>
+                    <option value="">23</option>
+                    <option value="">24</option>
+                    <option value="">25</option>
+                    <option value="">26</option>
+                    <option value="">27</option>
+                    <option value="">28</option>
+                    <option value="">29</option>
+                    <option value="">30</option>
+                    <option value="">31</option>
+                    <option value="">32</option>
+                    <option value="">33</option>
+                    <option value="">34</option>
+                    <option value="">35</option>
+                    <option value="">36</option>
+                    <option value="">37</option>
+                    <option value="">38</option>
+                    <option value="">39</option>
+                    <option value="">40</option>
+                    <option value="">41</option>
+                    <option value="">42</option>
+                    <option value="">43</option>
+                    <option value="">44</option>
+                    <option value="">45</option>
+                    <option value="">46</option>
+                    <option value="">47</option>
+                    <option value="">48</option>
+                    <option value="">49</option>
+                    <option value="">50</option>
+                    <option value="">51</option>
+                    <option value="">52</option>
+                    <option value="">53</option>
+                    <option value="">54</option>
+                    <option value="">55</option>
+                    <option value="">56</option>
+                    <option value="">57</option>
+                    <option value="">58</option>
+                    <option value="">59</option>
+                    <option value="">60</option>
+                    <option value="">61</option>
+                    <option value="">62</option>
+                    <option value="">63</option>
+                    <option value="">64</option>
+                    <option value="">65</option>
+                    <option value="">66</option>
+                    <option value="">67</option>
+                    <option value="">68</option>
+                    <option value="">69</option>
+                    <option value="">70</option>
+                    <option value="">71</option>
+                    <option value="">72</option>
+                    <option value="">73</option>
+                    <option value="">74</option>
+                    <option value="">75</option>
+                    <option value="">76</option>
+                    <option value="">77</option>
+                    <option value="">78</option>
+                    <option value="">79</option>
+                    <option value="">80</option>
+                    <option value="">81</option>
+                    <option value="">82</option>
+                    <option value="">83</option>
+                    <option value="">84</option>
+                    <option value="">85</option>
+                    <option value="">86</option>
+                    <option value="">87</option>
+                    <option value="">88</option>
+                    <option value="">89</option>
+                    <option value="">90</option>
+                    <option value="">91</option>
+                    <option value="">92</option>
+                    <option value="">93</option>
+                    <option value="">94</option>
+                    <option value="">95</option>
+                    <option value="">96</option>
+                    <option value="">97</option>
+                    <option value="">98</option>
+                    <option value="">99</option>
+                    <option value="">100</option>
+                    <option value="">101</option>
+                    <option value="">102</option>
+                    <option value="">103</option>
+                    <option value="">104</option>
+                    <option value="">105</option>
+                    <option value="">106</option>
+                    <option value="">107</option>
+                    <option value="">108</option>
+                    <option value="">109</option>
+                    <option value="">110</option>
+                    <option value="">111</option>
+                    <option value="">112</option>
+                    <option value="">113</option>
+                    <option value="">114</option>
+                    <option value="">115</option>
+                    <option value="">116</option>
+                    <option value="">117</option>
+                    <option value="">118</option>
+                    <option value="">119</option>
+                    <option value="">120</option>
+                    <option value="">121</option>
+                    <option value="">122</option>
+                    <option value="">123</option>
+                    <option value="">124</option>
+                    <option value="">125</option>
+                    <option value="">126</option>
+                    <option value="">127</option>
+                    <option value="">128</option>
+                    <option value="">129</option>
+                    <option value="">130</option>
+                    <option value="">131</option>
+                    <option value="">132</option>
+                    <option value="">133</option>
+                    <option value="">134</option>
+                    <option value="">135</option>
+                    <option value="">136</option>
+                    <option value="">137</option>
+                    <option value="">138</option>
+                    <option value="">139</option>
+                    <option value="">140</option>
+                    <option value="">141</option>
+                    <option value="">142</option>
+                    <option value="">143</option>
+                    <option value="">144</option>
+                    <option value="">145</option>
+                    <option value="">146</option>
+                    <option value="">147</option>
+                    <option value="">148</option>
+                    <option value="">149</option>
+                    <option value="">150</option>
+                    <option value="">151</option>
+                    <option value="">152</option>
+                    <option value="">153</option>
+                    <option value="">154</option>
+                    <option value="">155</option>
+                    <option value="">156</option>
+                    <option value="">157</option>
+                    <option value="">158</option>
+                    <option value="">159</option>
+                    <option value="">160</option>
+                    <option value="">161</option>
+                    <option value="">162</option>
+                    <option value="">163</option>
+                    <option value="">164</option>
+                    <option value="">165</option>
+                    <option value="">166</option>
+                    <option value="">167</option>
+                    <option value="">168</option>
+                    <option value="">169</option>
+                    <option value="">170</option>
+                    <option value="">171</option>
+                    <option value="">172</option>
+                    <option value="">173</option>
+                    <option value="">174</option>
+                    <option value="">175</option>
+                    <option value="">176</option>
+                  </select>
+
+                </fieldset>
+              </div>
+              <div class="mb-3">
+                <label for="deck" class="form-label">Deck Name</label>
+                <input type="text" class="form-control" id="deck" name="deck" value="Default">
+              </div>
+              <div class="mb-3">
+                <label for="front" class="form-label">Front</label>
+                <textarea class="form-control" id="front" name="front"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="back" class="form-label">Back</label>
+                <textarea class="form-control" id="back" name="back"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="tags" class="form-label">Tags</label>
+                <textarea class="form-control" id="tags" name="tags"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="imgUpload" class="form-label">Image</label>
+                <input type="file" class="form-control" id="imageUpload" name="file">
+              </div>
+              <div class="mb-3">
+                <fieldset>
+                  <legend>Text Location</legend>
+
+                  <select name="category">
+                    <option value="textTopCenter">Top Center</option>
+                    <option value="textTopLeft">Top Left</option>
+                    <option value="textTopRight">Top Right</option>
+                    <option value="textMiddleLeft">Middle Left</option>
+                    <option value="textMiddleCenter">Middle Center</option>
+                    <option value="textMiddleRight">Middle Right</option>
+                    <option value="textBottomLeft">Bottom Left</option>
+                    <option value="textBottomCenter">Bottom Center</option>
+                    <option value="textBottomRight">Bottom Right</option>
+
+                  </select>
+
+                </fieldset>
+              </div>
+              <button type="submit" class="btn btn-primary" value="Upload">Create Bible Verse Anki Card</button>
+            </form>
           </div>
-        </div>
+          <div class="col-6">
+            <ul class="row list-unstyled">
+              <% for(var i=0; i<posts.length; i++) {%>
+                <li class="col-6 justify-content-between mt-5">
+                  <a href="/post/<%= posts[i]._id%>">
+                    <img class="img-fluid" src="<%= posts[i].image%>">
+                  </a>
+                </li>
+                <% } %>
+            </ul>
+            <div class="row justify-content-center mt-5">
+              <a class="btn btn-primary" href="/feed">See All Cards</a>
+            </div>
+          </div>
+          <div class="col-6">
+            <ul class="row list-unstyled">
+              <% for(var i=0; i<cards.length; i++) {%>
+                <li class="col-6 justify-content-between mt-5">
+                  <a href="/card/<%= cards[i]._id%>">
+                    <img class="img-fluid" src="<%= cards[i].image%>">
+                  </a>
+                </li>
+                <% } %>
+            </ul>
+            <!-- <div class="row justify-content-center mt-5">
+              <a class="btn btn-primary" href="/globalFeed">Return to Global Feed</a>
+            </div> -->
+          </div>
 
       </div>
     </div>

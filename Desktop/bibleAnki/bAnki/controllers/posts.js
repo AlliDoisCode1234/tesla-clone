@@ -83,5 +83,14 @@ module.exports = {
       res.redirect("/profile");
     }
   },
+  getBibles: async (req, res) => {
+
+  },
+  getBooks: async (req, res) => {
+
+  },
+  getVerses: async (req, res) => {
+
+  },
 
 };
