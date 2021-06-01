@@ -35,27 +35,35 @@ async function getFetch() {
 
         console.log(biblesHashMap)
 
-        let userBible = "American Standard Version (Byzantine Text with Apocrypha)"
-        let userBibleID = "685d1470fe4d5c3b-01"
+
 
         const selectBible = document.querySelector('.bible-version');
 
         selectBible.addEventListener('change', (event) => {
+
+            const biblesHashMap = {}
+
+            data.data.forEach((itemData) => {
+                let rightChar = itemData.id;
+                let leftChar = itemData.name;
+
+                biblesHashMap[rightChar] = leftChar;
+            })
+
+            let userBible = "American Standard Version (Byzantine Text with Apocrypha)";
+            let userBibleID = "685d1470fe4d5c3b-01";
+
             const result = document.querySelector('.result');
-            result.textContext = `Bible Version: ${event.target.value}`
-            // switch (event) {
-            //     case "685d1470fe4d5c3b-01":
-            //         userBible = "American Standard Version (Byzantine Text with Apocrypha)";
-            //         userBibleId = "685d1470fe4d5c3b-01";
-            //         break;
-            //     case "6bab4d6c61b31b80-01":
-            //         userBible = "";
-            //         userBibleId = "6bab4d6c61b31b80-01"
-            //         break;
-            //     default:
-            //         userBible = "American Standard Version (Byzantine Text with Apocrypha)";
-            //         userBibleId = "685d1470fe4d5c3b-01";
-            // }
+            result.textContext = `Bible Version: ${event.target.value}`;
+
+            // check to see if bible Id is in bible hash map
+            if (event.target.value in biblesHashMap) {
+                userBibleID = biblesHashMap[rightChar]
+                userBible = biblesHashMap[leftChar]
+                // this should end everything
+            }
+
+
         });
 
 
