@@ -66,9 +66,7 @@
         should show bible version and give option to change version onclick (overlay) -->
           <div>
             <div>
-              <h3 id="userBibleType">
-                New International Version (DEFAULT)
-              </h3>
+              <h3 id="userBibleType" class="result"></h3>
             </div>
             <form action="" enctype="multipart/form-data" method="POST">
               <div class="mb-3">
@@ -114,7 +112,7 @@
                 <fieldset>
                   <legend>Bible Version:</legend>
 
-                  <select name="category">
+                  <select class="bible-version" name="bible-version">
 
                     <optgroup label="English">
 
