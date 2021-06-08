@@ -42,6 +42,8 @@ const ItemText = styled.div`
     padding-top: 15vh;
     text-align: center;
     flex-grow: 1;
+    font-size: 1.5rem;
+    font-weight: 200;
 
 `
 

@@ -12,14 +12,17 @@ function Header() {
             </a>
             <MenuGroup>
                 <div>Model S</div>
+                <div>Model 3</div>
                 <div>Model X</div>
                 <div>Model Y</div>
+                <div>Solar Roof</div>
+                <div>Solar Panels</div>
             </MenuGroup>
             <RightMenu>
                 <a href="#">Shop</a>
-                <a href="#">Tesla Account</a>
+                <a href="#">Account</a>
                 <MenuIconContainer onClick={() => setBurgerStatus(true)}>
-                    <MenuIcon />
+                    <div>Menu</div>
                 </MenuIconContainer>
             </RightMenu>
             <BurgerNav status={burgerStatus}>
@@ -40,9 +43,7 @@ function Header() {
                 <li><a href="">Test Drive</a></li>
                 <li><a href="">Find Us</a></li>
                 <li><a href="">Support</a></li>
-                <li><a href="">ICON</a></li>
-                <li><a href="">United States</a></li>
-                <li><a href="">English</a></li>
+
 
             </BurgerNav>
         </Container>
@@ -68,9 +69,11 @@ const Container = styled.div`
 const MenuGroup = styled.div`
     display: flex;
     text-transform: uppercase;
+    font-size: .9em;
+    font-weight: 400;
     div {
-        font-weight: 600;
-        padding: 0 10px;
+        
+        padding: 0 15px;
         cursor: pointer;
     }
 
@@ -84,9 +87,9 @@ const RightMenu = styled.div`
     display: flex;
     align-items: center;
     a {
-        font-weight: 600;
+        font-weight: 400;
         text-transform: uppercase;
-        padding-right: 10px;
+        padding-right: 25px;
     }
 `
 
@@ -94,6 +97,10 @@ const MenuIconContainer = styled.div`
     display: flex;
     align-items: center;
     cursor: pointer;
+    div {
+        font-weight: 400;
+        text-transform: uppercase;
+    }
 `
 
 const CloseContainer = styled.div`
