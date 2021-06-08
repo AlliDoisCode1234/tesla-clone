@@ -3,22 +3,17 @@ Responsive clone of Tesla's web application with scalability in mind.
 
 **Link to project:** https://tesla-clone-by-jamesfowlerdev.netlify.app/
 
-![alt tag](https://imgur.com/sks6orp)
+![alt tag](https://i.imgur.com/sks6orp.png)
 
 ## How It's Made:
 
 **Tech used:** HTML, CSS, JavaScript, ReactJS, Redux, Styled Components, React Animate, Material-UI
 
-Using the create-react-app redux template, I created a section component with props to render the application seamlessly. Used react animate to mirror Tesla's chic user experience. Styled Components to minimize additional css files and provide clean styling. 
-
-## Optimizations
-
-
-You don't have to include this section but interviewers *love* that you can not only deliver a final product that looks great but also functions efficiently. Did you write something then refactor it later and the result was 5x faster than the original implementation? Did you cache your assets? Things that you write in this section are **GREAT** to bring up in interviews and you can use this section as reference when studying for technical interviews!
+Using the create-react-app redux template, I created a section component with props to render the majority of the application seamlessly. Used react animate to mirror Tesla's chic user experience. Styled Components to minimize additional css files and provide clean styling. 
 
 ## Lessons Learned:
 
-No matter what your experience level, being an engineer means continuously learning. Every time you build something you always have those *whoa this is awesome* or *fuck yeah I did it!* moments. This is where you should share those moments! Recruiters and interviewers love to see that you're self-aware and passionate about growing.
+Material-UI is comparable to Styled Components, but maybe a better use case to have a structure. The create react app redux template has many quirks, but is useful when setting up a global state store like redux. Conceptualizing the system's architectural design pattern at initialization is essential.
 
 ## Examples:
 Take a look at these couple examples that I have in my own portfolio:
