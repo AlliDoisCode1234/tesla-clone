@@ -58,7 +58,7 @@ function Home() {
                 description=""
                 backgroundImg="accessories.jpg"
                 leftBtnText="Shop Now"
-                rightBtnText=""
+
 
             />
         </div>
