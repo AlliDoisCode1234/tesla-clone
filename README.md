@@ -2,6 +2,7 @@
 Responsive clone of Tesla's web application with scalability in mind. 
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/4ea90089-b2fc-4278-b1c3-5edf121bbaeb/deploy-status)](https://app.netlify.com/sites/tesla-clone-by-jamesfowlerdev/deploys)
+
 **Link to project:** https://tesla-clone-by-jamesfowlerdev.netlify.app/
 
 ![alt tag](https://i.imgur.com/sks6orp.png)
