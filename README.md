@@ -1,5 +1,6 @@
 # My Awesome Project
-Responsive clone of Tesla's web application with scalability in mind. 
+
+**Responsive clone of Tesla's web application with scalability in mind.**
 
 
 **Link to project:** https://tesla-clone-by-jamesfowlerdev.netlify.app/
