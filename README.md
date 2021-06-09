@@ -22,7 +22,7 @@ Material-UI is comparable to Styled Components, but maybe a better use case to h
 ## Examples:
 Take a look at these couple examples that I have in my own portfolio:
 
-**Portfolio:** https://github.com/AlliDoisCode1234/JosiahJames.io
+**Twitch Clone:** https://github.com/AlliDoisCode1234/twitch-clone
 
 **Solar Flower App:** https://www.smartflower.com
 
