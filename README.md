@@ -24,7 +24,7 @@ Take a look at these couple examples that I have in my own portfolio:
 
 **Twitch Clone:** https://github.com/AlliDoisCode1234/twitch-clone
 
-**Solar Flower App:** https://www.smartflower.com
+**Amazon Full Clone:** https://github.com/AlliDoisCode1234/amazon-full-clone
 
 **Buildium Social Dashboard:** https://github.com/AlliDoisCode1234/buildium-social-dashboard
 
